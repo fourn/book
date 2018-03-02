@@ -1,0 +1,585 @@
+@charset "utf-8";
+@import "var.scss";
+
+body {margin:0;padding:0;@include _font();font-family:$font01, Arial, Helvetica, sans-serif;background:$col05;text-align:left;position:relative;}
+a {@include _font();text-decoration:none;position:relative;cursor:pointer;}
+input {@include _font();}
+textarea { resize:none;@include _font();}
+textarea.textarea { border:none; background:none;}
+.main {@include _main();}
+.center {@include _center();}
+.absolute-r { @include _absolute(auto,0,0);}
+.absolute-l { @include _absolute();}
+.tabfix {@include _tabfix();}
+.textover { @include _textover();}
+.fc, a.fc { color:$col03;}
+.white, a.white { color:$col02;}
+.fcbg, input.fcbg { background:$col03;}
+.whitebg, input.whitebg { background:$col02;}
+
+//.comhead {@include _animation(comhead_show,.5s,linear,0s,1,backwards);@include _arr_delay(1,0.5s,0.2s);}
+.comheadbg { width:100%; height:$num03;}
+.comhead { z-index:99; position:fixed; left:0; top:0; width:100%; height:$num03;background:$col02;border-bottom: 1px solid $col06;
+  h2 { width:100%; text-align:center; font-size:$num01*1.3;line-height:$num03;}
+  .btn01 {
+    @include _absolute($width02); display: inline-block; padding-right: 0.4rem; background: url("../images/arrow02.png") no-repeat right center; background-size: 0.25rem;height:$num03;line-height:$num03; max-width: 2rem;@include _textover();
+  }
+  .box01 {
+    @include _absolute(auto,0.15rem,$width02); height: $num03 - 0.3rem; background: $col06; border-radius:($num03 - 0.3rem)/2; width: 4.5rem; overflow: hidden; z-index: 5;
+    .sub {
+      height: $num03 - 0.3rem; width: 1rem;background: url("../images/search.png") no-repeat right center; background-size: 0.4rem;
+    }
+    .text {@include _absolute(auto,0,$width02);height: $num03 - 0.3rem; width:3.2rem;}
+  }
+  .box02 { right: 1.5rem;}
+  .back {
+    @include _absolute($width02); display: block; width: 0.45rem; height: 100%; background: url("../images/back.png") no-repeat center center; background-size: 50%; z-index: 5;
+  }
+  .a1 {
+    @include _absolute(auto,0,$width02); color: $col03; display: inline-block; line-height: $num03; z-index: 5;
+  }
+  .a2 {
+    @include _absolute(auto,0,$width02); display:block;height: $num03; z-index: 5; width: 0.8rem; background: url("../images/search.png") no-repeat center center; background-size: 60%;
+  }
+  .a3 {
+    @include _absolute(auto,0,$width02); color: $col04; display: inline-block; line-height: $num03; z-index: 5;
+  }
+  .sp1 {
+    @include _absolute(auto,0,$width02); color: $col08; display: inline-block; line-height: $num03; z-index: 5;
+  }
+}
+.footbg {width:100%; height:1.2rem;}
+.foottab {
+  width: 100%;height:1.2rem;@include _fixed(0,auto,auto,0); background: $col02;border-top: 1px solid $col06;z-index: 90;
+  .tabfix {
+    width: 100%;
+    a {
+      display: table-cell; text-align: center;height:1.2rem; overflow: hidden; color: $col08; font-size: 0.26rem;
+      &.sel { color: $col03;}
+      span {
+        display: inline-block; padding-top: 0.7rem; background: url("../images/foot01.png") no-repeat  center 0.2rem; background-size: auto 0.55rem;
+      }
+      &:nth-child(1) {
+        &.sel span { background-image:url("../images/foot01-1.png"); }
+      }
+      &:nth-child(2) {
+        span {background-image:url("../images/foot02.png");}
+        &.sel span { background-image:url("../images/foot02-1.png"); }
+      }
+      &:nth-child(4) {
+        span {background-image:url("../images/foot03.png");}
+        &.sel span { background-image:url("../images/foot03-1.png"); }
+      }
+      &:nth-child(5) {
+        span {background-image:url("../images/foot04.png");}
+        &.sel span { background-image:url("../images/foot04-1.png"); }
+      }
+      &:nth-child(3) {
+        background: url("../images/bot.png") no-repeat  center center; background-size: auto 0.75rem;
+      }
+    }
+  }
+}
+.winbg { width: 100%; height: 100%;@include _fixed(); background: url("../images/darkbg.png") repeat; z-index: 99; display: none;}
+.winbgclick {width: 100%; height: 100%;@include _absolute();}
+.page404 {
+  width: 100%; text-align: center; padding:2rem 0 0.5rem;
+  p {color: $col08; padding: 0.3rem 0;}
+  a {
+    display: inline-block; padding: 0 0.3rem; color: $col02; background: $col03; border-radius: 3px; line-height: 0.6rem;
+  }
+}
+.bluebtn,input.bluebtn {
+  @include _inputbutton($num04,$num03,$width01,$col03,$col02);border-radius: 3px; display: block; margin: 0 auto;
+}
+.win_success {
+  width: 80%; margin: 0 auto; top: 20%; background: $col02; border-radius:0.3rem; text-align: center;
+  section {
+    padding: 0.5rem 0; display: inline-block; padding-left: 1rem; background: url("../images/success.png") no-repeat left center; background-size: 0.8rem;color: $col08; text-align: left;
+    p {font-size: $num04;color: $col01; }
+  }
+  a {
+    display: block; width: 100%; text-align: center; line-height: $num03; color: $col03; border-top: 1px solid $col06; font-size: $num04;
+  }
+}
+.win_confirm {
+  width: 80%; margin: 0 auto; top: 20%; background: $col02; border-radius:0.3rem; text-align:center; overflow: hidden;
+  .p1 {padding: 0.5rem 0;font-size: $num04;}
+  .p2 {
+    border-top: 1px solid $col06; width: 100%; overflow: hidden;
+    a {
+      display: block; width: 50%;line-height: $num03;font-size: $num04; color: $col03; text-align: center;
+      &:nth-child(2) {@include _absolute(auto,0,0); border-left: 1px solid $col05;}
+    }
+  }
+}
+.choose_a {
+  display: block; text-align: center;@include _textover(); line-height: $num03;height: $num03; color: $col08; background: $col02; margin-bottom: 1px;
+}
+.choose_asel {
+  background: $col03;color: $col02;
+}
+.orderfoot {
+  height:$num03; width: 100%; background: $col02;z-index:90; position: fixed; left: 0; bottom: 0; overflow: hidden;
+  .p1 {
+    float: left; padding-left: $width02; line-height: $num03; color: $col08;@include _textover(); width: 40%;
+    span {color: $col04; font-size: $num04;}
+  }
+  .sub01 {
+    float: right;margin-right: $width02;@include _inputbutton($num01,0.6rem,1.6rem,$col03,$col02); border-radius: 3px; top: 0.2rem; position: relative;
+  }
+  .sub02 {
+    float: right;margin-right: $width02;@include _inputbutton($num01,0.6rem,1.6rem,$col02,$col08); border-radius: 3px; top: 0.2rem; position: relative; border: 1px solid $col06;
+  }
+}
+
+/* 首页 */
+.indexmenu {
+  width: 100%; background: $col02; padding: $num01 0; overflow: hidden;border-bottom: 1px solid $col06;
+  a {
+    display: block; float: left; width: 25%; text-align: center; color: $col07; padding-top: 1rem;background: url("../images/ico/index01.png") no-repeat center top; background-size: auto 0.95rem;
+  }
+}
+.indexhot {
+  overflow: hidden; background: $col02;@include _main();border-bottom: 1px solid $col06;border-top: 1px solid $col06;
+  .more {
+    display: block; width: 100%; padding-bottom: 0.3rem; text-align: center; color: $col03;
+    span { display: inline-block; padding-right: 0.3rem;background: url("../images/arrow01.png") no-repeat right center; background-size: 0.13rem;}
+  }
+}
+.indextit01 {
+  width: 100%; text-align: center; line-height:$num03;height:$num03; font-size: 0.4rem; margin-bottom: 0.1rem;
+  span {
+    display: inline-block; padding: 0 0.6rem;
+    &:after,&:before {  content:""; display:block;width: 0.5rem;@include _absolute(0,$num03/2); height: 1px; border-bottom: 1px solid #d2d2d2;}
+    &:after { left: auto; right: 0;}
+  }
+}
+.indexlist {
+  width: 110%; overflow: hidden;
+  a {
+    display: block; float: left; width: 2rem; margin: 0 0.42rem 0.3rem 0;
+    i {
+      display: block; width: 100%; height: 2.7rem; background: url("../images/photo/img01.png") no-repeat center center; background-size: cover;
+    }
+    .p1 {@include _textover(); padding-top: 0.1rem;}
+    .p2 { color: $col04;@include _textover(); font-size: 0.25rem;
+      span { color:$col08; text-decoration: line-through; margin-left: 0.1rem;}
+    }
+  }
+}
+.indexgood {
+  width: 100%; overflow: hidden; height: 2.6rem; margin-bottom: 0.1rem;
+  a {
+    display: block; width:48%; background: url("../images/photo/img02.png") no-repeat center center; background-size: cover;
+    &.a1 { height: 2.6rem;}
+    &.a2 { height: 1.1rem;@include _absolute(auto,0,0);}
+    &.a3 { height: 1.1rem;@include _absolute(auto,auto,0,0);}
+  }
+}
+.prolist {
+  display: block;@include _main(); border-bottom: 1px solid $col06; overflow: hidden; padding-top: 0.25rem;padding-bottom: 0.25rem;
+  i {display: block;@include _absolute(); width: 2rem; height: 2.6rem; background: url("../images/photo/img01.png") no-repeat center center; background-size: cover;}
+  .box {
+    padding-left: 2.5rem; min-height: 2.6rem;
+    .p1 { font-size: $num04;@include  _textover(); padding: 0.2rem 0 0.1rem;}
+    .p2 {color:$col08; padding:0.05rem 0 0.2rem 0;@include _textover(); line-height: 0.3rem;
+      span { margin-left: 0.2rem; padding-left:0.2rem;display: inline-block; border-left: 1px solid $col06;}
+    }
+    .p3 {color:$col04;@include _textover();padding-bottom: 0.2rem;font-size: $num04;span {color:$col08; text-decoration: line-through; margin-left: 0.1rem;}}
+    .p4 {
+      overflow: hidden; width: 100%;color:$col08;
+      span {
+        display: inline-block; padding-left: 0.35rem;background: url("../images/ico01.png") no-repeat center left; background-size: 0.25rem;
+        &.sp2 {
+          margin-left: 0.5rem; background-image: url("../images/ico02.png");
+        }
+      }
+    }
+    .p5 { font-size: $num04;@include _textover(); padding-top: 0.25rem;}
+    .p6 { border-top:1px solid $col06; top: 0.2rem; padding-top: 0.4rem;@include _textover(); color: $col08;}
+    .p7 { font-size: $num01*0.9; color: $col08;}
+    .p8 {
+      width: 100%; overflow: hidden;border-top:1px solid $col06;padding-top: 0.25rem;
+      a {
+        float: left; padding: 0 0.3rem; color: $col02; border-radius: 3px; background: #fa743d; margin-right: 0.2rem; line-height: $num02*1.1;
+        &.btn02 { background: $col03;}
+        &.btn03 { background: $col04;}
+        &.btn04 { background: #df0716;}
+      }
+    }
+    .green { color: $col09;}
+  }
+}
+.loading {
+  display: block; text-align: center; padding: 0.35rem 0;
+  span {
+    display: inline-block; padding-left: 0.7rem; line-height: 0.6rem; font-size:$num04; color: $col08; background: url("../images/loading.png") no-repeat left center; background-size: 0.5rem;
+  }
+}
+.schoolcheck {
+  background: $col02; width: 80%; padding:0.3rem 5% 0.5rem; margin: 0 auto; border-radius: 0.3rem; overflow: hidden; top:20%;
+  h2 { font-size: 0.4rem; line-height: 0.7rem; margin-bottom: 0.2rem; padding-left: 0.45rem; background: url("../images/ico03.png") no-repeat left center; background-size: 0.35rem;}
+  section {
+    width: 100%; overflow: auto; height: 3.8rem;
+    a {
+      display: block; padding-right: 0.8rem; border-bottom: 1px solid $col06;@include _textover(); line-height: 0.9rem; font-size: $num04;
+      &.sel { color: $col03; background: url("../images/ico04.png") no-repeat right center; background-size: 0.5rem;}
+    }
+  }
+}
+.search_end {
+  width: 100%; text-align: center; line-height:$num03;height:$num03;margin-bottom: 0.1rem; color: $col08;
+  span {
+    display: inline-block; padding: 0 0.6rem;
+    &:after,&:before {  content:""; display:block;width: 0.5rem;@include _absolute(0,$num03/2); height: 1px; border-bottom: 1px solid #d2d2d2;}
+    &:after { left: auto; right: 0;}
+  }
+}
+.search_story {
+  line-height: $num03;@include _center(); font-size: $num04;
+}
+.search_resurt {
+  border-bottom: 1px solid $col06; line-height: 0.9rem;height:0.9rem;@include _center();
+  a {
+    display:block;@include _textover(); width: 90%;line-height:0.9rem; color: $col08;
+  }
+  i {
+    display: block;@include _absolute(auto,0,0);height: 0.9rem; width: 0.5rem; z-index: 5; background: url("../images/clear.png") no-repeat center center; background-size: 50%;
+  }
+}
+.rel_tit {
+  @include _main(); line-height: $num03;height: $num03; background: $col02; overflow: hidden;
+  span { float: left;}
+  input { float: left; width: 82%;height: $num03; border: none;}
+}
+.rel_img {
+  background: $col02; padding:0.3rem 0 0.3rem $width02;overflow: hidden;
+  .img {
+    float: left; width: 2.4rem; height: 3.3rem; border: 1px solid $col06; background: url("../images/fm.png") no-repeat center center; background-size: cover;
+  }
+  .box {
+    float: right; width: 4.4rem;
+    p {
+      display: block; padding-right:0.3rem;border-bottom: 1px solid $col06; overflow: hidden; line-height: 0.8rem;height: 0.8rem; color: $col08;
+      span { float: left;}
+      .text {
+        float:left; width: 3rem;height: 0.8rem;
+      }
+      .text01 { width:2.8rem;}
+      .text02 { width:2.6rem;}
+    }
+  }
+}
+.rel_info {
+  background: $col02; padding-left: $width02;
+  .a1 {
+    display: block; overflow: hidden; line-height:0.9rem;height:0.9rem; border-bottom: 1px solid $col06;
+    span { float: left;}
+    p { float: left; width: 5.6rem; background: url("../images/arrow03.png") no-repeat right center;@include _textover(); display: block; background-size: 0.15rem; padding-right: 0.4rem;}
+  }
+  .p1 {
+    display: block; overflow: hidden; line-height:0.9rem;height:0.9rem; border-bottom: 1px solid $col06;
+    span { float: left;}
+    .text { float: left; height: 0.9rem; margin-right: 0.2rem; width: 2.1rem;}
+  }
+  .p2 {
+    display: block; overflow: hidden; line-height:0.9rem;height:0.9rem;
+    span { float: left;}
+    .text { float: left; height: 0.9rem;width:5.3rem;}
+  }
+}
+.class_tit {
+  @include _fixed(0,2rem); width: 100%; height: $num03; background: $col02; border-bottom: 1px solid $col06; z-index: 89; overflow: hidden;
+  a {
+    display: block; width: 50%;height: $num03; line-height: $num03; text-align: center; color: $col08;
+    span { display: inline-block; padding-right: 0.35rem; background: url("../images/arrow04.png") no-repeat right center; background-size: 0.2rem;}
+    &:nth-child(2) {@include _absolute(auto,0,0);
+      &:after {@include _absolute(0,0.2rem); content: ""; display: block; height: 0.6rem; border-left: 1px solid $col06; width: 1px;
+      }
+    }
+    &.sel01 span { background-image:url("../images/arrow04-1.png"); }
+    &.sel02 span { background-image:url("../images/arrow05.png"); color: $col03; }
+    &.sel03 span { background-image:url("../images/arrow05-1.png"); color: $col03; }
+  }
+}
+.top_address {
+  @include _main(); background: $col02; display: block; padding-top: 0.25rem;padding-bottom: 0.25rem; overflow: hidden;
+  span {
+    display: inline-block; float: left; padding: 0 0.1rem; color:$col04; border: 1px solid $col04; border-radius: 3px;
+  }
+  .p1 {
+    float: right; width: 80%; color: $col08;
+  }
+}
+.order_menu {
+  width: 96%; background: $col02; overflow: hidden; float: right; padding: 0.25rem 0; border-bottom: 1px solid $col06; line-height:0.6rem;
+  i {
+    float: left; display: block; width: 0.6rem; height: 0.6rem; background: url("../images/photo/img01.png") no-repeat center center; background-size: cover; border-radius: 50%;
+  }
+  span {
+    float: left; margin-left: 0.3rem; max-width: 30%;@include _textover();
+  }
+  p {
+    float: right;max-width:53%;@include _textover(); color: $col08; right: $width02;
+    &.p1 { color: $col04;}
+    &.p2 { color: $col03;}
+    &.p3 { color: #32d7ac;}
+  }
+}
+.order_btn {
+  width:$width01+$width02; padding-left: $width02; background: $col02; overflow: hidden;
+  .sp1 {
+    display: inline-block; line-height:1rem;@include _absolute();
+  }
+  .a1 {
+    display: block;min-height: 1rem; overflow: hidden; border-bottom: 1px solid $col06; padding-right: 0.3rem;
+    &:last-child { border: none;}
+    p {
+      text-align: right;@include _textover();line-height:1rem; color:$col08; width: 80%; float: right;
+    }
+  }
+  .box {
+    min-height: 1rem;padding-right: 0.3rem;overflow: hidden;border-bottom: 1px solid $col06;
+    &:last-child { border: none;}
+    .text {
+      float: right;height:1rem;color:$col08; width: 80%; text-align: right;
+    }
+    p {
+      text-align: left;@include _textover();line-height:1rem; width: 80%; float: right;
+      &.p1 { text-align: right;color:$col08;}
+      &.green { color: $col09;}
+    }
+  }
+}
+.paychoose {
+  width:$width01+$width02; padding-left: $width02; background:$col02; overflow: hidden;
+  li {
+    padding-left:12%; width: 88%; border-bottom: 1px solid $col06; height: $num03; background: url("../images/check01.png") no-repeat left center; background-size: 0.4rem;
+    p { line-height: $num03; padding-left:0.8rem;background: url("../images/ico/pay01.png") no-repeat left center; background-size:auto 0.4rem;}
+    &.sel { background-image: url("../images/check03.png");}
+    &:last-child { border: none;}
+  }
+}
+.paysub {
+  position: fixed; bottom: 0.3rem; left: $width02;@include _inputbutton($num01*1.2,$num03,$width01,$col03,$col02); border-radius: 3px; z-index: 5;
+}
+.bookinfo {
+  width: 100%; background: $col02; overflow: hidden;
+  .p1 { font-size: $num01*1.3; text-align: center;}
+  .p2 {
+    text-align: center; padding: 0.15rem 0 0.3rem; color: $col08; line-height: 0.35rem;@include _textover();
+    span {
+      display: inline-block; border-left: 1px solid $col06; margin-left: 0.2rem; padding-left: 0.2rem;
+    }
+  }
+  .p3 {
+    @include _center(); height: $num02*1.5; text-align: center;
+    span {
+      display: inline-block; padding-left: 0.4rem; background: url("../images/ico01.png") no-repeat left center; background-size: auto 0.3rem; color: $col08; font-size: $num01*0.9;
+      &.sp1 {@include _absolute();}
+      &.sp2 { background-image:url("../images/ico02.png"); }
+      &.sp3 { background-image:url("../images/ico05.png");@include _absolute(auto,0,0); }
+    }
+  }
+  .p4 {
+    padding: 0.3rem $width02; border-top: 1px solid $col06;
+  }
+}
+.sellerinfo {
+  @include _main(); background: $col02; overflow: hidden; padding-top: 0.3rem;padding-bottom: 0.3rem;
+  .box {
+    height: $num03; padding-left: $num03 + 0.2rem;
+    i {display: block; width: $num03;height: $num03; background: url("../images/photo/img01.png") no-repeat center center; background-size: cover; border-radius: 50%;@include _absolute();}
+    .p1 { font-size: $num04; padding: 0.1rem 0 0;}
+    .p2 { font-size: $num01*0.9;}
+  }
+  .p3 {color: $col08;@include _absolute(auto,0.6rem,$width02);font-size: $num01*0.9;}
+}
+.membertop {
+  background: url("../images/ico/member_bg.png") no-repeat center center; background-size: cover; color: $col02;@include _main(); padding-top: 0.5rem; padding-bottom: 0.5rem;
+  section {
+    padding-left: 1.7rem;min-height: 1.4rem;
+    i {
+      display: block; width: 1.4rem; height: 1.4rem; border-radius: 50%;@include _absolute(); background: url("../images/photo/img01.png") no-repeat center center; background-size: cover;
+    }
+    .p1 { font-size: $num01*1.2;}
+    .p2 { font-size: $num01*0.9;@include _textover(); width: 60%;}
+    .p3 { padding-top: 0.3rem;}
+    .a1 {@include _absolute(auto,0.4rem,0); z-index: 5; color: $col03; padding: 0 0.2rem; background: $col02; border-radius: 0.2rem;font-size: $num01*0.8; line-height: 0.4rem;}
+  }
+}
+.membermenu {
+  width: 100%; overflow: hidden; background: $col02;
+  .a1 {
+    line-height: $num03;height: $num03; border-bottom: 1px solid $col06; display: block;@include _main();
+    span {@include _absolute(auto,0,$width02); color: $col08; font-size: $num01*0.9; padding-right: 0.3rem; background: url("../images/arrow03.png") no-repeat right center; background-size: 0.15rem;}
+  }
+  section {
+    width: 100%;
+    a {
+      display: table-cell; text-align: center; padding: 0.4rem 0 0.2rem; color: $col08; font-size: $num01*0.9;
+      img { height:0.95rem;}
+    }
+  }
+}
+.memberbtn {
+  display: block;background: $col02; line-height: $num03;height: $num03; padding-left: $width02;
+  p {
+    border-bottom: 1px solid $col06; padding-left: 0.8rem; background: url("../images/arrow03.png") no-repeat 96% center; background-size: 0.15rem;
+    i {
+      display: block;@include _absolute(); width:0.5rem; height: 1rem; background: url("../images/ico/member05.png") no-repeat left center; background-size:0.5rem;
+    }
+  }
+}
+.memberbox {
+  background: $col02;
+  a { margin-bottom: 1px;}
+  a:last-child p { border: none;}
+}
+.ordertit {
+  position: fixed; z-index: 80; left: 0; top: 1rem; background: $col02; width: 100%; height: $num03; line-height: $num03; overflow: hidden; border-bottom: 1px solid $col06;
+  section { width: 110%; overflow: hidden;}
+  a {
+    display: inline-block; float: left;height: $num03; line-height: $num03; margin-left: 0.4rem;
+    &.sel {
+      color: $col03;
+      &:after {content: "";display: block;width:100%;position: absolute;bottom: 0;left:0;height: 0.07rem;background: $col03;}
+    }
+  }
+
+}
+.orderlist {
+  width: 100%; background: $col02; margin-bottom:0.2rem;
+}
+.overend {
+  width: 100%; text-align: center; line-height:$num03;height:$num03; font-size:$num01*0.9; color: $col08;
+  span {
+    display: inline-block; padding: 0 0.6rem;
+    &:after,&:before {  content:""; display:block;width: 0.5rem;@include _absolute(0,$num03/2); height: 1px; border-bottom: 1px solid #d2d2d2;}
+    &:after { left: auto; right: 0;}
+  }
+}
+.paylist {
+  width: 88%; padding: 0 3% 0.1rem; background: $col02; margin: 0 auto 0.2rem;
+  .p1 {
+    line-height: $num03; border-bottom: 1px solid $col06; color: $col08; margin-bottom: 0.2rem;
+    span {@include _absolute(auto,0,0);color: $col01; font-size:$num04;}
+  }
+  .p2 {
+    line-height:0.6rem; color: $col08;
+    span {@include _absolute(auto,0,0);color: $col01;}
+  }
+}
+.moneyinfo {
+  @include _main(); background: $col02; padding-top:0.3rem; padding-bottom: 0.3rem;text-align:center;
+  .p1 { line-height: $num03; font-size: $num04*1.7;}
+  .btn {
+    @include _inputbutton($num01*1.2,$num03,100%,$col03,$col02);border-radius: 3px; margin-top: 1rem;
+  }
+}
+.p_infolist {
+  width: 88%; padding: 0.2rem 3%; background: $col02; margin: 0 auto 0.2rem;
+  .p2 { color: $col08; font-size: $num01*0.9;}
+  span {@include _absolute(auto,0.4rem,3%);
+    &.sp1 { color: $col03;}
+  }
+}
+.getmoney {
+  width: 88%; padding:0 3%; background: $col02; margin: 0.2rem auto;
+  .p1 {
+    width: 100%; border-bottom: 1px solid $col06; line-height: 1rem;height: 1rem;
+    span {
+      display: inline-block; padding-left: 0.6rem; background: url("../images/ico/pay01.png") no-repeat left center; background-size: 0.5rem;
+    }
+    .text {@include _absolute(auto,0,0); width: 62%;height: 1rem;}
+  }
+  .p2 {color: $col08; font-size: $num01*0.9; padding: 0.2rem 0 0;}
+  .p3 {
+    line-height: 1rem;height: 1rem;border-bottom: 1px solid $col06;
+    .text { font-size: $num04*1.2;}
+  }
+  .p4 {color: $col08; font-size: $num01*0.9; padding: 0.2rem 0;}
+}
+.myinfo {
+  background: $col02; padding-left: $width02; width: $width02+$width01;
+  .tit {@include _absolute();}
+  .box01 {
+    padding: 0.2rem 0.7rem 0.2rem 0; border-bottom: 1px solid $col06; min-height: 1rem; line-height: 1rem; background: url("../images/arrow03.png") no-repeat 96% center; background-size: 0.2rem; overflow: hidden; display: block;
+    .tit { top: 0.2rem;}
+    i {display:block; width: 1rem; height: 1rem; border-radius: 50%; background: url("../images/photo/img01.png") no-repeat center center; background-size: cover; float: right;}
+  }
+  .box02 {
+    border-bottom: 1px solid $col06;padding:0 0.7rem 0 0; display: block;height: 1rem; line-height: 1rem;background: url("../images/arrow03.png") no-repeat 96% center; background-size: 0.2rem; overflow: hidden;
+    &:last-child { border: none;}
+    p { text-align: right; color: $col08;@include _textover(); width: 80%; float: right;}
+  }
+  .box03 {
+    border-bottom: 1px solid $col06;line-height: 1rem;
+    select { width: 100%;direction: rtl;color: #999;font-size: 0.3rem;}
+  }
+}
+.editbtn {
+  @include _inputbutton($num01*1.2,$num03,92%,$col03,$col02);border-radius: 3px; margin:1rem auto 0; display: block;
+}
+.edittext {
+  @include _main(); background: $col02; line-height: 1rem;
+  .text { width: 100%;height: 1rem;}
+}
+.bookbtn {
+  width: 100%; overflow: hidden; text-align: center;
+  .sub {
+    display: inline-block;@include _inputbutton($num01,0.8rem,27%,$col03,$col02); border-radius: 3px;
+    &:nth-child(2) { margin: 0 3%;}
+  }
+  .sub01 { background: #fa743d;}
+  .sub02 { background: $col03;}
+  .sub03 { background: $col04;}
+}
+.infotime {
+  text-align: center; padding: 0.3rem 0; line-height: 0.4rem;
+  span {
+    display: inline-block; color: $col02;font-size: $num01*0.9; background: $col08; padding: 0 0.2rem; border-radius: 3px;
+  }
+}
+.newslist {
+  width: 88%; padding:0.15rem 3%; background: $col02; margin:0 auto 0.2rem;
+  a {
+    display: block; color: $col03;
+  }
+}
+.noticebox {
+  padding-left: $width02; background: $col02;
+  a {
+    display: block; border-bottom: 1px solid $col06; padding: 0.25rem 0.3rem 0.25rem 1.2rem; background: url("../images/ico/notice01.png") no-repeat left center; background-size: 0.9rem;
+    .p1 {
+      width: 100%; font-size: $num01*1.1;
+      span {@include _absolute(auto,0,0); color: $col08;font-size: $num01*0.9;}
+    }
+    .p2 {color: $col08;}
+    &:last-child { border: none;}
+  }
+}
+.loginbox {
+  width:88% ; margin: 0 auto; padding: 0.2rem 0; border-bottom: 1px solid $col06; overflow: hidden; min-height: 0.8rem;
+  i {
+    display: block; width: 0.6rem; height: 0.5rem; border-right: 1px solid $col06;@include _absolute(0,0.35rem); background: url("../images/ico/login01.png") no-repeat left center; background-size: 70%;
+  }
+  .yzm01 {
+    display: block;@include _absolute(auto,0.2rem,0);height: 0.8rem; width: 2rem; z-index: 5;background: url("../images/photo/yzm.png") no-repeat center center; background-size:auto 80%;
+  }
+  .yzm02 {
+    display: inline-block;@include _absolute(auto,0.3rem,0);height: 0.6rem;border: 1px solid $col06; padding: 0 0.25rem; line-height: 0.6rem;
+  }
+  .text {position: relative; height: 0.8rem; left: 0.9rem; width: 3.5rem;}
+  .text01 { width:5.5rem;}
+}
+.loginbtn {
+  @include _inputbutton($num01*1.2,1rem,88%,$col03,$col02); border-radius: 3px; position: relative; margin: 0 auto; display: block;
+}
+.logintext {
+  margin: 0.3rem auto;width: 88%;
+  a { color: $col08;}
+  .a1 {@include _absolute(auto,0,0);}
+}
+

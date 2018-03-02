@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+$font01:"微软雅黑";
+
+$col01:#1a1a1a;
+$col02:#fff;
+$col03:#27b7ff;
+$col04:#ff3366;
+$col05:#f6f5fa;
+$col06:#ebeced;
+$col07:#4d4d4d;
+$col08:#999;
+$col09:#32d7ac;
+
+$num01:0.3rem;
+$num02:0.45rem;
+$num03:1rem;
+$num04:0.36rem;
+
+$width01:92%;
+$width02:(100% - $width01)/2;
+
+@mixin _bg01(){
+	background: -webkit-gradient(linear, 0 100%, 100% 0, from(#1291a8),to(#7cbe30));
+}
+@mixin _font($oursize01:$num01,$oursize02:$num02,$oursize03:$col01){
+	font-family:$font01;
+	font-size:$oursize01;
+	line-height:$oursize02;
+	color: $oursize03;
+}
+@mixin _cartoon($ourtime01:0.2s,$ourtime02:0.01s){
+	transition:all $ourtime01 ease-in-out $ourtime02;
+	-webkit-transition:all $ourtime01 ease-in-out $ourtime02;
+}
+@mixin _act_opacity($ouropacity:0.5){
+	filter:alpha(Opacity= $ouropacity * 100 );
+	opacity:$ouropacity;
+	-webkit-opacity:$ouropacity;
+}
+@mixin _act_translate($ourscale01:0px,$ourscale02:0px){
+	transform:translate($ourscale01,$ourscale02);
+	-webkit-transform:translate($ourscale01,$ourscale02);
+}
+@mixin _animation($act01:text,$act02:1s,$act03:linear,$act04:0.01s,$act05:infinite,$act06:forwards){
+	animation:$act01 $act02 $act03 $act04 $act05;
+	-webkit-animation:$act01 $act02 $act03 $act04 $act05;
+	animation-fill-mode:$act06;
+	-webkit-animation-fill-mode:$act06;
+}
+@mixin _textover(){
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+@mixin _inblock(){
+	display:inline-block;
+    *display:inline;
+    *zoom:1;
+}
+@mixin _inputtext($oursize01:$num01,$oursize02:$num02,$oursize03:100%){
+	border:none;
+	background:none;
+	font-family:"微软雅黑";
+	line-height:$oursize02;
+	height:$oursize02;
+	width:$oursize03;
+	font-size:$oursize01;
+	resize:none;
+	-webkit-appearance: none; 
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent; /* For some Androids */
+	&:focus {outline:none;}
+}
+@mixin _inputbutton($oursize01:$num01,$oursize02:$num03,$oursize03:100%,$oursize04:$col03,$oursize05:$col02){
+	border:none;
+	background:$oursize04;
+	color:$oursize05;
+	font-family:"微软雅黑";
+	font-size:$oursize01;
+	line-height:$oursize02;
+	height:$oursize02;
+	width:$oursize03;
+	cursor:pointer;
+	text-align:center;
+	-webkit-appearance:none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+@mixin _absolute ($oursize01:0px,$oursize02:0px,$oursize03:auto,$oursize04:auto){
+	position:absolute;
+	left:$oursize01;
+	top:$oursize02;
+	right:$oursize03;
+	bottom:$oursize04;
+}
+@mixin _fixed ($oursize01:0px,$oursize02:0px,$oursize03:auto,$oursize04:auto){
+	position:fixed;
+	left:$oursize01;
+	top:$oursize02;
+	right:$oursize03;
+	bottom:$oursize04;
+}
+@mixin _center($oursize01:$width01){
+	width:$oursize01;
+	margin-left:auto;
+	margin-right:auto;
+}
+@mixin _main($oursize01:$width01,$oursize02:$width02){
+	width:$oursize01;
+	padding-left:$oursize02;
+	padding-right:$oursize02;
+}
+@mixin _tabfix(){
+	display:table; table-layout:fixed;border-collapse:collapse;
+	nav,menu { display:table-row; }
+}
+@mixin _arr_delay($act01:1,$act02:$time01,$act03:0s){
+	animation-delay:$act01 * $act02 + $act03;
+	-webkit-animation-delay:$act01 * $act02 + $act03;
+}
+/* 以下是动画 */
+@keyframes comhead_show {
+	0% {@include _act_translate(0px,-100px);@include _act_opacity(0);}
+	100% {@include _act_translate();@include _act_opacity(1);}
+}
+@-webkit-keyframes comhead_show {
+	0% {@include _act_translate(0px,-100px);@include _act_opacity(0);}
+	100% {@include _act_translate();@include _act_opacity(1);}
+}

@@ -1,0 +1,225 @@
+@charset "utf-8";
+
+/* CSS Document */
+* {padding: 0;margin: 0;}
+html {font-size: 62.5%;/*10 ÷ 16 × 100% = 62.5%*/}
+img {border: 0;position:relative; max-width:100%;}
+.clear {height:0;line-height:0;font-size:0;clear:both;visibility:hidden;overflow:hidden;padding:0;margin:0;}
+.clearafter:after {content:"";display:block; width:100%;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;overflow:hidden;padding:0;margin:0;}
+div,ul,dl,dd,dt,li,td,th,tr,table,p,span,h1,h2,h3,h4,h5,h6{ margin:0;padding:0;list-style:none;list-style-type:none;word-wrap:break-word;position:relative;border:none; font-weight:400;}
+header, footer, nav, section, article, menu, aside {display:block;position:relative;}
+table { border-collapse:collapse;border-spacing:0;}
+th,td { text-align:left;}
+input:focus,select:focus {outline:none;}
+input.sub {cursor:pointer; background:none; border:none;-webkit-appearance:none;}
+input.text {background:none; border:none;}
+a,button,input,select{
+	-webkit-appearance: none; 
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent; /* For some Androids */}
+
+/* common main */
+.c0 { color:#000;}
+.c1 { color:#111;}
+.c2 { color:#222;}
+.c3 { color:#333;}
+.c4 { color:#444;}
+.c5 { color:#555;}
+.c6 { color:#666;}
+.c7 { color:#777;}
+.c8 { color:#888;}
+.c9 { color:#999;}
+.fs3 { font-size:0.3rem;}
+.fs35 { font-size:0.35rem;}
+.fs4 { font-size:0.4rem;}
+.fs45 { font-size:0.45rem;}
+.fs5 { font-size:0.5rem;}
+.fs55 { font-size:0.55rem;}
+.fs6 { font-size:0.6rem;}
+.fs65 { font-size:0.65rem;}
+.fs7 { font-size:0.7rem;}
+.fw-b { font-weight:bold;}
+.fw400 { font-weight:400;}
+.lh3 { line-height:0.3rem;}
+.lh4 { line-height:0.4rem;}
+.lh5 { line-height:0.5rem;}
+.lh6 { line-height:0.6rem;}
+.lh7 { line-height:0.7rem;}
+.lh8 { line-height:0.8rem;}
+.lh9 { line-height:0.9rem;}
+.lh10 { line-height:1rem;}
+.lh11 { line-height:1.1rem;}
+.lh12 { line-height:1.2rem;}
+.lh13 { line-height:1.3rem;}
+.lh14 { line-height:1.4rem;}
+.lh15 { line-height:1.5rem;}
+.unl { text-decoration:underline;}
+.unl-no { text-decoration:none;}
+.unl-th { text-decoration:line-through;}
+.ta-l { text-align:left;}
+.ta-c { text-align:center;}
+.ta-r { text-align:right;}
+.fl { float:left;}
+.fr { float:right;}
+.va-m { vertical-align:middle;}
+.va-t { vertical-align:top;}
+.pr { position:relative;}
+.pa { position:absolute;}
+.oh { overflow:hidden;}
+.none { display:none;}
+.block { display:block;}
+.inblock { display:inline-block;}
+.inline { display:inline;}
+.pointer { cursor:pointer;}
+.w100 { width:100%;}
+.w96 { width:96%;}
+.w94 { width:94%;}
+.w90 { width:90%}
+.w80 { width:80%;}
+.w70 { width:70%;}
+.w75 { width:75%;}
+.w60 { width:60%;}
+.w50 { width:50%;}
+.w40 { width:40%;}
+.w30 { width:30%;}
+.w20 { width:20%;}
+.w10 { width:10%;}
+.h01 { height:0.1rem;}
+.h02 { height:0.2rem;}
+.h03 { height:0.3rem;}
+.h04 { height:0.4rem;}
+.h05 { height:0.5rem;}
+.h06 { height:0.6rem;}
+.h07 { height:0.7rem;}
+.h08 { height:0.8rem;}
+.h09 { height:0.9rem;}
+.h10 { height:1rem;}
+.h11 { height:1.1rem;}
+.h12 { height:1.2rem;}
+.h13 { height:1.3rem;}
+.h14 { height:1.4rem;}
+.h15 { height:1.5rem;}
+.h100 { height:100%;}
+.pt02 { padding-top:0.2rem;}
+.pt03 { padding-top:0.3rem;}
+.pt04 { padding-top:0.4rem;}
+.pb02 { padding-bottom:0.2rem;}
+.pb03 { padding-bottom:0.3rem;}
+.pb04 { padding-bottom:0.4rem;}
+.mt02 { margin-top:0.2rem;}
+.mt03 { margin-top:0.3rem;}
+.mt04 { margin-top:0.4rem;}
+.mb02 { margin-bottom:0.2rem;}
+.mb03 { margin-bottom:0.3rem;}
+.mb04 { margin-bottom:0.4rem;}
+.ml02 { margin-left:0.2rem;}
+.ml03 { margin-left:0.3rem;}
+.ml04 { margin-left:0.4rem;}
+.mr02 { margin-right:0.2rem;}
+.mr03 { margin-right:0.3rem;}
+.mr04 { margin-right:0.4rem;}
+.z-index5 { z-index:5;}
+.z-index10 { z-index:10;}
+.z-index15 { z-index:15;}
+.mga { margin-left:auto;margin-right:auto;}
+
+/* banner图效果-循环轮播 */
+.bannerbox {position:relative;width:100%;}
+.bannersum { width:1000%; overflow: hidden;}
+.bannersum li { width: 10%; float: left; text-align: center; padding: 0.5rem 0; background: #fff;}
+.bannersum li img { height:4rem;}
+.bannernum {z-index:5;position:absolute;width:100%;height:0.8rem;text-align:center;bottom:0;left:0; display: none;}
+.bannernum span {margin:0 0.1rem;display:inline-block;background:url(about:blank);width:0.2rem;height:0.2rem;background:#fff;opacity:0.4;border-radius:50%; line-height:0px; font-size:0px;}
+.bannernum span.sel { opacity:0.9;}
+.bannerpage { width: 100%; z-index: 5;}
+.bannerpage a { position: absolute; top: -3rem; display: block; width:0.5rem; height: 1rem; background: url("../images/arrow06.png") no-repeat center center; background-size: 0.2rem;}
+.bannerpage a:first-child { left: 0;}
+.bannerpage a:last-child { background-image: url("../images/arrow06-1.png"); right: 0;}
+/*图片列表-点击放大展示*/
+.imgshow {position:relative;width:100%;overflow: hidden;}
+.imgshow i {display:block;float:left;background:url(../images/photo/index01.png) no-repeat center center;background-size:cover;width:2.2rem;height:2.2rem;margin: 0 0 0.2rem 0.2rem;}
+/*评价星星效果*/
+.reviewsbox { overflow: hidden; line-height: 0.5rem;}
+.reviewsbox i { display:block; height:0.5rem; width:0.7rem; float: left; background:url(../images/star02.png) no-repeat center center; background-size: contain;}
+.reviewsbox i.sel { background-image:url(../images/star01.png);}
+.reviewsbox span { display: inline-block; float: left; padding-left:0.5rem;}
+/*横向滑动选项卡*/
+.slidingtit { width: 100%; overflow: hidden; background:#fff; position: fixed; left: 0; top: 1rem; z-index: 90;border-bottom: 1px solid #ebeced;}
+.slidingtit menu { width: 900%;overflow: hidden; position: relative;}
+.slidingtit menu p { float: left;}
+.slidingtit menu p a { padding: 0 0.4rem;color: #888; display: block;line-height:1rem;}
+.slidingtit menu p.sel a { color: #000;}
+.slidingtit menu p.sel a:after{ content: ""; display: block; width: 70%; position: absolute; bottom: 0; left: 15%; height: 0.07rem; background: #27b7ff;}
+/*常用选项卡*/
+.choosemenu { width: 100%; overflow: hidden; border-top: 1px solid #ddd;border-bottom: 1px solid #ddd; }
+.choosemenu span { padding: 0 0.3rem; line-height: 1rem; display: inline-block;}
+.choosemenu span.sel { background: #27aad5; color: #fff;}
+.choosesum { width: 100%;}
+.choosesum li { display: none; width: 100%;height:2rem;overflow: hidden;background:red;}
+.choosesum li:nth-child(2) { background: blue;}
+.choosesum li:nth-child(3) { background: orange;}
+/*多选、全选按钮-多用于购物车*/
+.carcheckbox { display: block; float: left; margin-right:0.3rem; width:0.4rem; height: 0.4rem; background: url("../images/check01.png") no-repeat center center; background-size: contain;}
+.allcheckbox {display: block; float: left;height: 0.4rem; padding-left: 0.5rem; line-height:0.4rem;background: url("../images/check01.png") no-repeat center left; background-size: contain; }
+.carcheckbox input,.allcheckbox input { display: none;}
+.carcheckbox_sel,.allcheckbox_sel { background-image:url("../images/check02.png"); }
+/*选择插件（时间选择、选项选择）*/
+.android-ics { position:initial;}
+input.inputwin,input#winselect01_dummy,input#winselect02_dummy { line-height:0.7rem;height:0.7rem; border: 1px solid #ddd; width: 90%; padding: 0 2%; display: block; margin: 0 auto 0.2rem;}
+
+/*
+1、无法编译SCSS文件时，不要修改style.css文件内容，否则无用功
+2、需求调整样式，就在该文件中编辑所需求修改的详细样式，common.css优先级高于style.css ，具体须修改的样式名，请务必以浏览器解析为主
+3、乖哦~不要胡乱修改惹麻烦！前端喵们会生气抓狂哒╭(╯^╰)╮
+*/
+
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}
+
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+.alert-info {
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    color: #31708f;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+
+button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+
+
+
+
+
+
