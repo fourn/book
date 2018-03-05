@@ -180,6 +180,9 @@ return [
         //laravel-sms
         Toplan\PhpSms\PhpSmsServiceProvider::class,
         Toplan\Sms\SmsManagerServiceProvider::class,
+
+        //ide-helper
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*

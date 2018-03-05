@@ -6,6 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "barryvdh/laravel-ide-helper": "^2.4",
+        "encore/laravel-admin": "1.5.*",
         "fideloper/proxy": "~3.3",
         "hieu-le/active": "~3.5",
         "laravel/framework": "5.5.*",
@@ -51,6 +53,12 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
+            "php artisan optimize"
         ]
     },
     "config": {
