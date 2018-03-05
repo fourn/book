@@ -151,6 +151,16 @@ return [
      * Settings for extensions.
      */
     'extensions' => [
+        'media-manager' => [
+            'disk' => 'admin'   // 指向config/filesystem.php中设置的disk
+        ],
+    ],
 
+    /**
+     * custom admin config
+     */
+    'states' => [
+        'on'  => ['value' => 1, 'color' => 'primary', 'name'=>'是'],
+        'off' => ['value' => 2, 'color' => 'default', 'name'=>'否'],
     ],
 ];

@@ -7,9 +7,13 @@
     "require": {
         "php": ">=7.0.0",
         "barryvdh/laravel-ide-helper": "^2.4",
+        "doctrine/dbal": "^2.6",
         "encore/laravel-admin": "1.5.*",
         "fideloper/proxy": "~3.3",
         "hieu-le/active": "~3.5",
+        "laravel-admin-ext/config": "^1.0",
+        "laravel-admin-ext/media-manager": "^1.0",
+        "laravel-admin-ext/scheduling": "^1.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "overtrue/laravel-lang": "~3.0",
