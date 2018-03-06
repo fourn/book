@@ -9,49 +9,72 @@
 
 <div class="slidingtit" id="slidingtit">
     <menu id="categories_box">
-        <p category_id="0"><a>全部</a></p>
-        @foreach($categories as $category)
-        <p category_id="{{ $category->id }}"><a>{{ $category->name }}</a></p>
+        <p><a href="{{ Request::url() }}">全部</a></p>
+        @foreach($categories as $key => $category)
+        <p><a href="{{ Request::url() }}?category_id={{ $category->id }}&index={{ $key + 1 }}">{{ $category->name }}</a></p>
         @endforeach
     </menu>
 </div>
 
 <div class="clear h10"></div>
-<div class="class_tit">
-    <a class="sel02" href="#"><span>最近更新</span></a>
-    <a href="#"><span>最低价格</span></a>
+<div class="class_tit" id="order_box">
+    <a class="sel02" order_by="updated_at" order_type="desc"><span>最近更新</span></a>
+    <a order_by="price" order_type="asc"><span>最低价格</span></a>
 </div>
 <div class="clear h10"></div>
 <div class="w100 whitebg oh" id="box">
     {{--异步书本--}}
-    {{--<p class="loading"><span>正在加载...</span></p>--}}
 </div>
+<p class="loading"><span>正在加载...</span></p>
 @include('layouts._footer')
 @include('layouts._set_school')
 @endsection
 @section('script')
 <script type="text/javascript">
-    eval('slidingCheckTit(0,"#slidingtit","menu","p","sel");');
+    eval('slidingCheckTit({{ Request::input('index', 0) }},"#slidingtit","menu","p","sel");');
     //参数依次为：当前选中索引、外层id、子集标签、孙子级标签，选中状态样式class
+    var search_data = {'category_id':'{{ Request::input('category_id', 0) }}', 'orderBy':'updated_at', 'orderType':'desc', 'page':1};
+    var _lock = false;
     function loadData(){
+        var _count = $('#box').find('a').length;
+        var _page = Math.ceil(_count / 6) + 1;
+        if(_page == 0){
+            _page = 1;
+        }
+        search_data.page = _page;
+        $('.loading span').html('正在加载...');
+        _lock = true;
         $.ajax({
             url:'{{ route('books.index') }}',
             type:'get',
-            data:{},
+            data:search_data,
             success: function (data){
-                $('#box').append(data);
+                _lock = false;
+                if(data){
+                    $('#box').append(data);
+                }else{
+                    $('.loading span').html('没有更多');
+                }
             }
         })
     }
     $(window).scroll(function() {
         if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
-            loadData();
+            if(_lock === false){
+                loadData();
+            }
         }
     });
     loadData();
     $(function (){
-        $('#categories_box').find('p').click(function (){
-            alert(1);
+        $('#order_box').find('a').click(function (){
+            _this = $(this);
+            _this.siblings('a').removeClass('sel02');
+            _this.addClass('sel02');
+            $('#box').html('');
+            search_data.orderBy = _this.attr('order_by');
+            search_data.orderType = _this.attr('order_type');
+            loadData();
         });
     })
 </script>

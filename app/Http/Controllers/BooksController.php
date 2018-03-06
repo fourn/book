@@ -20,10 +20,12 @@ class BooksController extends Controller
         return view('books.list', compact('categories'));
     }
 
-	public function index()
+	public function index(Request $request)
 	{
-
-		$books = Book::ofSchool()->paginate(6);
+	    $category_id = $request->category_id;
+		$books = Book::ofSchool()->when($category_id, function ($query) use ($category_id){
+		    return $query->where('category_id', $category_id);
+        })->orderBy($request->orderBy, $request->orderType)->paginate(6);
 		return view('books.index', compact('books'));
 	}
 
