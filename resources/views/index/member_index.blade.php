@@ -24,7 +24,7 @@
 </div>
 <div class="clear h02"></div>
 <div class="memberbox">
-    <a href="#" class="memberbtn">
+    <a href="{{ route('books.my') }}" class="memberbtn">
         <p><i style="background-image: url(images/ico/member05.png)"></i>我的发布</p>
     </a>
     <a href="#" class="memberbtn">

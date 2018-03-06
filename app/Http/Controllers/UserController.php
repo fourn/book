@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Handlers\ImageUploadHandler;
+use App\Models\School;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,8 @@ class UserController extends Controller
 
     public function index(){
         $user = Auth::user();
-        return view('user.index', compact('user'));
+        $schools = School::all();
+        return view('user.index', compact('user', 'schools'));
     }
 
     public function avatar(){
@@ -58,6 +60,13 @@ class UserController extends Controller
         ]);
         $user = Auth::user();
         $user->gender = $request->gender;
+        $user->save();
+        return ['code'=>1];
+    }
+
+    public function updateSchool(Request $request){
+        $user = Auth::user();
+        $user->school_id = $request->school_id;
         $user->save();
         return ['code'=>1];
     }

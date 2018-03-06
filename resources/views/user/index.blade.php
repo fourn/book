@@ -26,10 +26,10 @@
         </div>
         <div class="box03">
             <span class="tit">学校</span>
-            <select class="box02">
-                <option value="0">中学</option>
-                <option value="1">大学</option>
-                <option value="2">博士</option>
+            <select class="box02" id="school">
+                @foreach ($schools as $school)
+                <option @if($school->id == $user->school_id) selected @endif value="{{ $school->id }}">{{ $school->name }}</option>
+                @endforeach
             </select>
         </div>
         <a class="box02" href="{{ route('passport.forgot', ['autoSend'=>1]) }}">
@@ -47,6 +47,20 @@
                 type:'post',
                 data:{
                     'gender':_gender
+                },
+                success:function (data){
+                    //console.log(data);
+                }
+            })
+        });
+
+        $('#school').change(function (){
+            var _school = $(this).val();
+            $.ajax({
+                url:'{{ route('user.school') }}',
+                type:'post',
+                data:{
+                    'school_id':_school
                 },
                 success:function (data){
                     //console.log(data);

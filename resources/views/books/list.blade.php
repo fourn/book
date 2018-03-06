@@ -59,7 +59,7 @@
         })
     }
     $(window).scroll(function() {
-        if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+        if ($(document).scrollTop() >= $(document).height() - $(window).height() - 200) {
             if(_lock === false){
                 loadData();
             }

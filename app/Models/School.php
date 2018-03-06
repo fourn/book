@@ -10,11 +10,11 @@ class School extends Model
         'name', 'depot'
     ];
 
-    public function user(){
+    public function users(){
         return $this->hasMany(User::class);
     }
 
-    public function book(){
+    public function books(){
         return $this->hasMany(Book::class);
     }
 

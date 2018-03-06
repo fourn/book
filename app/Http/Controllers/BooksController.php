@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookRequest;
+use Auth;
 
 class BooksController extends Controller
 {
@@ -23,11 +24,26 @@ class BooksController extends Controller
 	public function index(Request $request)
 	{
 	    $category_id = $request->category_id;
-		$books = Book::ofSchool()->when($category_id, function ($query) use ($category_id){
+		$books = Book::ofSchool()
+            ->when($category_id, function ($query) use ($category_id){
 		    return $query->where('category_id', $category_id);
-        })->orderBy($request->orderBy, $request->orderType)->paginate(6);
+        })->orderBy(
+            $request->input('orderBy', 'updated_at'),
+            $request->input('orderType', 'desc')
+        )->paginate(6);
 		return view('books.index', compact('books'));
 	}
+
+	public function my(Request $request){
+        $user = Auth::user();
+        $mybooks = $user->books()
+            ->when($request->status, function ($query) use ($request){
+                return $query->where('status', $request->status);
+            })
+            ->orderBy('created_at', 'desc')->get();
+        $statuses = config('custom.book.status');
+        return view('books.my', compact('statuses', 'mybooks'));
+    }
 
     public function show(Book $book)
     {

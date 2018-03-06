@@ -32,8 +32,10 @@ Route::prefix('user')->group(function (){
     Route::get('name', 'UserController@name')->name('user.name');
     Route::post('name', 'UserController@updateName')->name('user.name');
     Route::post('gander', 'UserController@updateGender')->name('user.gender');
+    Route::post('school', 'USerController@updateSchool')->name('user.school');
 });
 
 //书本
 Route::get('books/list', 'BooksController@list')->name('books.list');
+Route::get('books/my', 'BooksController@my')->name('books.my');
 Route::resource('books', 'BooksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

@@ -12,7 +12,7 @@ class Category extends Model
         'name', 'description'
     ];
 
-    public function book(){
+    public function books(){
         return $this->hasMany(Book::class);
     }
 }
