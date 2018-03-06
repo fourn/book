@@ -17,4 +17,18 @@ class Book extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * cover used attribute for human read
+     * @param $value
+     * @return mixed
+     */
+    public function getUsedAttribute($value){
+        $used_arr = config('custom.book.used');
+        return $used_arr[$value];
+    }
+
+    public function scopeOfSchool($query){
+        return $query->where('school_id', session('school_id', 0));
+    }
 }

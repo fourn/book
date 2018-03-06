@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,17 +11,32 @@ class IndexController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except'=>[
-            'index'
+            'index', 'setSchool'
         ]]);
     }
 
-    //自定义页面逻辑处理
+    //首页
     public function index(){
-        return view('index.index');
+        $sessionSchool = School::find(session('school_id'));
+        return view('index.index', compact('sessionSchool'));
     }
 
+    //会员中心首页
     public function memberIndex(){
         $user = Auth::user();
         return view('index.member_index', compact('user'));
+    }
+
+    //选择学校页面
+    public function setSchool($school_id){
+        session(['school_id'=>$school_id]);
+        if(Auth::check()){
+            $user = Auth::user();
+            if(!$user->school_id){
+                $user->school_id = $school_id;
+                $user->save();
+            }
+        }
+        return redirect()->intended(route('index'));
     }
 }

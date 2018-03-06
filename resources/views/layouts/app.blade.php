@@ -52,16 +52,15 @@
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="{{ asset('layer/layer.js') }}"></script>
     <script>
-        $(function (){
-            $('button.close').click(function (){
-                $(this).parents('section').remove();
-            });
-
-        });
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+        $(function (){
+            $('button.close').click(function (){
+                $(this).parents('section').remove();
+            });
         });
     </script>
 @yield('script')

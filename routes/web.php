@@ -13,6 +13,7 @@
 
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('memberIndex', 'IndexController@memberIndex')->name('memberIndex');
+Route::get('setSchool/{id}', 'IndexController@setSchool')->name('setSchool');
 
 //登录注册
 Route::get('register', 'PassportController@showRegisterForm')->name('passport.register');
@@ -33,4 +34,6 @@ Route::prefix('user')->group(function (){
     Route::post('gander', 'UserController@updateGender')->name('user.gender');
 });
 
+//书本
+Route::get('books/list', 'BooksController@list')->name('books.list');
 Route::resource('books', 'BooksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

@@ -2,7 +2,7 @@
 
 @section('content')
     <header class="comhead">
-        <p class="btn01">云南师范大学</p>
+        <p class="btn01" onclick="$('#set_school').show()">{{ $sessionSchool->name }}</p>
         <div class="box01">
             <input type="submit" value=" " class="sub" />
             <input type="search" value="" class="text" placeholder="输入书籍名字" />
@@ -159,22 +159,7 @@
     </div>
 
     @include('layouts._footer')
-
-    <!--弹窗-->
-    <aside class="winbg" style="display: block;">
-        <div class="winbgclick"></div>
-        <div class="schoolcheck">
-            <h2>选择您所在的学校</h2>
-            <section>
-                <a class="sel" href="#">云南财经大学</a>
-                <a href="#">我是学校的名字哦我是学校的名字哦我是学校的名字哦我是学校的名字哦</a>
-                <a href="#">我是学校的名字哦</a>
-                <a href="#">我是学校的名字哦</a>
-                <a href="#">我是学校的名字哦</a>
-                <a href="#">我是学校的名字哦</a>
-            </section>
-        </div>
-    </aside>
+    @include('layouts._set_school')
 @endsection
 @section('script')
 <script type="text/javascript">

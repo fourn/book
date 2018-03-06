@@ -10,7 +10,7 @@ class BooksTableSeeder extends Seeder
 {
     public function run()
     {
-        $used = ['九成新', '八成新', '七成新'];
+        $used = [7,8,9,10];
         $imags = [
             'https://img14.360buyimg.com/n7/jfs/t1705/189/702227414/177982/cc8c12f0/55dab54dN5271c377.jpg',
             'https://img10.360buyimg.com/n7/jfs/t19330/111/465728713/211343/6c0e1661/5a81162fN73b1d1ab.jpg',

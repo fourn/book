@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookRequest;
@@ -11,12 +12,18 @@ class BooksController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'list']]);
+    }
+
+    public function list(){
+        $categories = Category::all();
+        return view('books.list', compact('categories'));
     }
 
 	public function index()
 	{
-		$books = Book::paginate();
+
+		$books = Book::ofSchool()->paginate(6);
 		return view('books.index', compact('books'));
 	}
 

@@ -17,4 +17,8 @@ class School extends Model
     public function book(){
         return $this->hasMany(Book::class);
     }
+
+    public function setSchoolLink(){
+        return route('setSchool', ['id'=>$this->id]);
+    }
 }

@@ -18,7 +18,7 @@ $factory->define(App\Models\Book::class, function (Faker $faker) {
         'name' => $faker->name,
         'author' => $faker->name,
         'press' => $faker->name,
-        'published_at' => $faker->date(),
+        'published_at' => $faker->year(),
         'original_price'=>$original_price,
         'price'=>$price,
         'description'=>$sentence,

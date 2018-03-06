@@ -183,6 +183,9 @@ return [
 
         //ide-helper
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+        //view-composer 注册视图合成器
+        App\Providers\ComposerServiceProvider::class,
     ],
 
     /*

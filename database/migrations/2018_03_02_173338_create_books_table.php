@@ -14,8 +14,8 @@ class CreateBooksTable extends Migration
             $table->text('image');
             $table->string('author');
             $table->string('press');
-            $table->string('published_at');
-            $table->string('used');
+            $table->year('published_at');
+            $table->tinyInteger('used');
             $table->decimal('original_price', 8, 2);
             $table->decimal('price', 8, 2);
             $table->text('description')->nullable();

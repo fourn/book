@@ -135,7 +135,7 @@ class BooksController extends Controller
             $form->image('image')->removable()->help('只能上传一张图片');
             $form->text('author', '作者');
             $form->text('press', '出版社');
-            $form->date('published_at', '出版时间');
+            $form->year('published_at', '出版时间');
             $form->select('used', '新旧程度')->options(config('custom.book.used'));
             $form->currency('original_price', '原价')->symbol('￥');
             $form->currency('price', '售价')->symbol('￥');
