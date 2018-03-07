@@ -52,7 +52,8 @@ class BooksController extends Controller
 
 	public function create(Book $book)
 	{
-		return view('books.create_and_edit', compact('book'));
+	    $categories = Category::all();
+		return view('books.create_and_edit', compact('book', 'categories'));
 	}
 
 	public function store(BookRequest $request)
