@@ -1091,9 +1091,10 @@ textarea.textarea {
   float: left;
 }
 
-.rel_info .a1 p {
+.rel_info .a1 p, .rel_info .a1 select {
   float: left;
   width: 5.6rem;
+  height: 0.9rem;
   background: url("../images/arrow03.png") no-repeat right center;
   overflow: hidden;
   white-space: nowrap;
@@ -1101,6 +1102,12 @@ textarea.textarea {
   display: block;
   background-size: 0.15rem;
   padding-right: 0.4rem;
+  border: none;
+  font-size: 0.3rem;
+}
+
+.rel_info .a1 select {
+  width: 6rem;
 }
 
 .rel_info .p1 {
@@ -1137,6 +1144,12 @@ textarea.textarea {
   float: left;
   height: 0.9rem;
   width: 5.3rem;
+}
+
+.rel_info .textarea {
+  border: #eee 2px solid;
+  width: 6.8rem;
+  height: 2rem;
 }
 
 .class_tit {

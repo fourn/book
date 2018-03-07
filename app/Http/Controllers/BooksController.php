@@ -53,13 +53,17 @@ class BooksController extends Controller
 	public function create(Book $book)
 	{
 	    $categories = Category::all();
-		return view('books.create_and_edit', compact('book', 'categories'));
+	    $useds = config('custom.book.used');
+		return view('books.create_and_edit', compact( 'book', 'categories', 'useds'));
 	}
 
-	public function store(BookRequest $request)
+	public function store(BookRequest $request, Book $book)
 	{
-		$book = Book::create($request->all());
-		return redirect()->route('books.show', $book->id)->with('message', 'Created successfully.');
+		$book->fill($request->all());
+		$book->user_id = Auth::id();
+		$book->school_id = session('school_id');
+		$book->save();
+//		return redirect()->route('books.show', $book->id)->with('message', 'Created successfully.');
 	}
 
 	public function edit(Book $book)

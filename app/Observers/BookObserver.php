@@ -9,6 +9,10 @@ use App\Models\Book;
 
 class BookObserver
 {
+    public function saving(Book $book){
+
+    }
+
     public function creating(Book $book)
     {
         //

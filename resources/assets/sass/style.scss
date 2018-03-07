@@ -274,11 +274,29 @@ textarea.textarea { border:none; background:none;}
 .rel_info {
   background: $col02; padding-left: $width02;
   .a1 {
-    display: block; overflow: hidden; line-height:0.9rem;height:0.9rem; border-bottom: 1px solid $col06;
-    span { float: left;}
-    p { float: left; width: 5.6rem; background: url("../images/arrow03.png") no-repeat right center;@include _textover(); display: block; background-size: 0.15rem; padding-right: 0.4rem;}
+    display: block;
+    overflow: hidden;
+    line-height: 0.9rem;
+    height: 0.9rem;
+    border-bottom: 1px solid $col06;
+    span {
+      float: left;
+    }
+    p, select {
+      float: left;
+      width: 5.6rem;
+      height: 0.9rem;
+      background: url("../images/arrow03.png") no-repeat right center;
+      @include _textover();
+      display: block;
+      background-size: 0.15rem;
+      padding-right: 0.4rem;
+      border: none;
+      font-size: 0.3rem;
+    }
+    select {width: 6rem;}
   }
-  .p1 {
+    .p1 {
     display: block; overflow: hidden; line-height:0.9rem;height:0.9rem; border-bottom: 1px solid $col06;
     span { float: left;}
     .text { float: left; height: 0.9rem; margin-right: 0.2rem; width: 2.1rem;}
@@ -287,6 +305,11 @@ textarea.textarea { border:none; background:none;}
     display: block; overflow: hidden; line-height:0.9rem;height:0.9rem;
     span { float: left;}
     .text { float: left; height: 0.9rem;width:5.3rem;}
+  }
+  .textarea{
+    border: #eee 2px solid;
+    width: 6.8rem;
+    height: 2rem;
   }
 }
 .class_tit {
