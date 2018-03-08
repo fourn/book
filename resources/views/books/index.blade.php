@@ -7,7 +7,7 @@
             <p class="p2">{{ $book->author }}<span>{{ $book->press }}</span></p>
             <p class="p3">￥{{ $book->price }}<span>￥{{ $book->original_price }}</span></p>
             <p class="p4">
-                <span class="sp1">{{ $book->published_at }}年出版</span><span class="sp2">{{ $book->used }}</span>
+                <span class="sp1">{{ $book->published_at }}年出版</span><span class="sp2">{{ $book->used_format }}</span>
             </p>
         </div>
     </a>

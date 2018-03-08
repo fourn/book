@@ -23,12 +23,22 @@ class Book extends Model
      * @param $value
      * @return mixed
      */
-    public function getUsedAttribute($value){
+    public function getUsedFormatAttribute(){
         $used_arr = config('custom.book.used');
-        return $used_arr[$value];
+        return $used_arr[$this->used];
+    }
+
+    public function getStatusNameAttribute(){
+        $statuses = array_pluck(config('custom.book.status'), 'name', 'id');
+        return $statuses[$this->status];
     }
 
     public function scopeOfSchool($query){
         return $query->where('school_id', session('school_id', 0));
     }
+
+    public function scopeForUser($query){
+        return $query->where('is_show', 1)->where('status', 2);
+    }
+
 }

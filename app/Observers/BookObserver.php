@@ -10,6 +10,8 @@ use App\Models\Book;
 class BookObserver
 {
     public function saving(Book $book){
+        $book->description = clean($book->description, 'user_book_description');
+
 
     }
 

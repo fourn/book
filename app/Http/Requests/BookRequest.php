@@ -10,6 +10,9 @@ class BookRequest extends Request
         {
             // CREATE
             case 'POST':
+            // UPDATE
+            case 'PUT':
+            case 'PATCH':
             {
                 return [
                     // CREATE ROLES
@@ -20,21 +23,9 @@ class BookRequest extends Request
                     'published_at'=>'required|date_format:Y',
                     'used'=>'integer|min:1',
                     'category_id'=>'integer|min:1',
-                    'original_price'=>'required|digits|min:0.01',
-                    'price'=>'required|digits|min:0.01',
-                ];
-            }
-            // UPDATE
-            case 'PUT':
-            {
-                return [
-
-                ];
-            }
-            case 'PATCH':
-            {
-                return [
-                    // UPDATE ROLES
+                    'original_price'=>'required|numeric|min:0.01',
+                    'price'=>'required|numeric|min:0.01',
+                    'image'=>'required',
                 ];
             }
             case 'GET':
@@ -59,11 +50,12 @@ class BookRequest extends Request
             'used.min'=>'请选择新旧程度',
             'category_id.min'=>'请选择书本分类',
             'original_price.required'=>'请输入原价',
-            'original_price.digits'=>'原价格式不正确',
+            'original_price.numeric'=>'原价格式不正确',
             'original_price.min'=>'原价最小为0.01',
             'price.required'=>'请输入售价',
-            'price.digits'=>'售价格式不正确',
+            'price.numeric'=>'售价格式不正确',
             'price.min'=>'售价最小为0.01',
+            'image.required'=>'请上传封面图片',
         ];
     }
 }

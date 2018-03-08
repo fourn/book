@@ -27,11 +27,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $dates = [
+        'last_actived_at'
+    ];
+
     public function books(){
         return $this->hasMany(Book::class);
     }
 
     public function school(){
         return $this->belongsTo(School::class);
+    }
+
+    public function isAuthOf($model){
+        return $model->user_id == $this->id;
     }
 }

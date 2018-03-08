@@ -1,83 +1,53 @@
 @extends('layouts.app')
-
+@section('body', '')
 @section('content')
+<header class="comhead">
+    <h2>出售详情</h2>
+    <a href="javascript:history.back()" class="back"></a>
+</header>
+<div class="comheadbg"></div>
 
-<div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1>Book / Show #{{ $book->id }}</h1>
-            </div>
-
-            <div class="panel-body">
-                <div class="well well-sm">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a class="btn btn-link" href="{{ route('books.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>
-                        </div>
-                        <div class="col-md-6">
-                             <a class="btn btn-sm btn-warning pull-right" href="{{ route('books.edit', $book->id) }}">
-                                <i class="glyphicon glyphicon-edit"></i> Edit
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <label>Sn</label>
-<p>
-	{{ $book->sn }}
-</p> <label>Name</label>
-<p>
-	{{ $book->name }}
-</p> <label>Image</label>
-<p>
-	{{ $book->image }}
-</p> <label>Author</label>
-<p>
-	{{ $book->author }}
-</p> <label>Press</label>
-<p>
-	{{ $book->press }}
-</p> <label>Published_at</label>
-<p>
-	{{ $book->published_at }}
-</p> <label>Used</label>
-<p>
-	{{ $book->used }}
-</p> <label>Original_price</label>
-<p>
-	{{ $book->original_price }}
-</p> <label>Price</label>
-<p>
-	{{ $book->price }}
-</p> <label>Description</label>
-<p>
-	{{ $book->description }}
-</p> <label>Status</label>
-<p>
-	{{ $book->status }}
-</p> <label>Is_show</label>
-<p>
-	{{ $book->is_show }}
-</p> <label>Is_recommend</label>
-<p>
-	{{ $book->is_recommend }}
-</p> <label>User_id</label>
-<p>
-	{{ $book->user_id }}
-</p> <label>Category_id</label>
-<p>
-	{{ $book->category_id }}
-</p> <label>School_id</label>
-<p>
-	{{ $book->school_id }}
-</p> <label>Admin_id</label>
-<p>
-	{{ $book->admin_id }}
+<div id="box" class="bannerbox">
+    <ul id="sum" class="bannersum">
+        <li><img src="{{ $book->image }}" /></li>
+    </ul>
+    <p id="num" class="bannernum"></p>
+</div><!--我是banner-->
+{{--
+<p class="bannerpage">
+    <a href="javascript:void(0);" id="bannernlast">&nbsp;</a>
+    <a href="javascript:void(0);" id="bannernnext">&nbsp;</a>
 </p>
-            </div>
-        </div>
-    </div>
+
+
+<script type="text/javascript">
+    eval('indexBanner("#box","#sum","li",300,5000,"#num","span","sel","#bannernlast","#bannernnext");');//Banner，可以不写“上一页”“下一页”的id，eavl()方法保证在代码之后加载执行
+</script>
+--}}
+<div class="bookinfo">
+    <p class="p1">{{ $book->name }}</p>
+    <p class="p2">{{ $book->author }}<span>{{ $book->press }}</span></p>
+    <p class="p3">
+        <span class="sp1" style="position: static;margin-right: 1.5rem;">{{ $book->published_at }}年出版</span>
+        <span class="sp2">{{ $book->used_format }}</span>{{--<span class="sp3">34本</span>--}}
+    </p>
+    <p class="p4">{!! $book->description !!}</p>
 </div>
 
+<div class="clear h02"></div>
+<div class="sellerinfo">
+    <div class="box">
+        <i style="background-image: url({{ $user->avatar }})"></i>
+        <p class="p1">{{ $user->name }}</p> <p class="p2">学校：{{ $user->school->name }}</p>
+    </div>
+    <p class="p3">{{ $user->last_actived_at->diffForHumans() }} 活跃</p>
+</div>
+
+<div class="clear h02"></div>
+
+<div class="clear h10"></div>
+<footer class="orderfoot">
+    <p class="p1">应付：<span>￥{{ $book->price }}</span></p>
+    <input type="submit" value="立即购买" class="sub01" />
+</footer>
 @endsection

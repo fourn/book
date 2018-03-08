@@ -11,7 +11,7 @@ class SetSchoolComposer{
             if(Auth::check()){
                 $school_id = Auth::user()->school_id;
                 if($school_id){
-                    session('school_id', $school_id);
+                    session()->put('school_id', $school_id);
                 }
             }
         }
