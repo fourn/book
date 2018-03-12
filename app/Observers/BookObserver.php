@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\EditBook;
 use App\Models\Book;
 
 // creating, created, updating, updated, saving,
@@ -13,6 +14,12 @@ class BookObserver
         $book->description = clean($book->description, 'user_book_description');
 
 
+    }
+
+    public function saved(Book $book){
+        if($book->status != 2){
+            dispatch(new EditBook($book));
+        }
     }
 
     public function creating(Book $book)

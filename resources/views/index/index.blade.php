@@ -2,7 +2,7 @@
 
 @section('content')
     <header class="comhead">
-        <p class="btn01" onclick="$('#set_school').show()">{{ $sessionSchool->name }}</p>
+        <p class="btn01" onclick="$('#set_school').show()">{{--{{ $sessionSchool->name }}--}}</p>
         <div class="box01">
             <input type="submit" value=" " class="sub" />
             <input type="search" value="" class="text" placeholder="输入书籍名字" />
