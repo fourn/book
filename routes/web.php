@@ -43,4 +43,16 @@ Route::get('books/show-self/{book}', 'BooksController@showSelf')->name('books.sh
 Route::get('books/toggle_show', 'BooksController@toggleShow')->name('books.toggle_show');
 Route::resource('books', 'BooksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
-
+//订单
+Route::prefix('order')->group(function (){
+    Route::get('create/{book}', 'OrdersController@create')->name('order.create');
+    Route::post('store', 'OrdersController@store')->name('order.store');
+    Route::get('pay/{order}' ,'OrdersController@pay')->name('order.pay');
+    Route::get('fake_pay', 'OrdersController@fakePay')->name('order.fake_pay');
+    //列表
+    Route::get('index', 'OrdersController@index')->name('order.index');
+    Route::get('seller/index', 'OrdersController@sellerIndex')->name('order.seller_index');
+    //详情
+    Route::get('show/{order}', 'OrdersController@show')->name('order.show');
+    Route::get('seller/show/{order}', 'OrdersController@sellerShow')->name('order.seller_show');
+});

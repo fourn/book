@@ -18,6 +18,10 @@ class Book extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
     /**
      * cover used attribute for human read
      * @param $value
@@ -40,5 +44,12 @@ class Book extends Model
     public function scopeForUser($query){
         return $query->where('is_show', 1)->where('status', 2);
     }
+
+    //是否可以被购买
+    public function canBuy(){
+        $statuses = array_pluck(config('custom.book.status'), 'canShow', 'id');
+        return $statuses[$this->status];
+    }
+
 
 }

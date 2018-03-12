@@ -21,4 +21,10 @@ class School extends Model
     public function setSchoolLink(){
         return route('setSchool', ['id'=>$this->id]);
     }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+
 }

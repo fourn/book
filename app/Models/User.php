@@ -39,6 +39,14 @@ class User extends Authenticatable
         return $this->belongsTo(School::class);
     }
 
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+    public function sellOrders(){
+        return $this->hasMany(Order::class, 'seller_id');
+    }
+
     public function isAuthOf($model){
         return $model->user_id == $this->id;
     }
