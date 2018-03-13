@@ -12,8 +12,6 @@ class BookObserver
 {
     public function saving(Book $book){
         $book->description = clean($book->description, 'user_book_description');
-
-
     }
 
     public function saved(Book $book){

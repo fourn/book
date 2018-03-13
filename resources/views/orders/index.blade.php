@@ -3,18 +3,18 @@
 @section('content')
 <header class="comhead">
     <h2>我下的订单</h2>
-    <a href="#" class="back"></a>
-    <a href="#" class="a2">&nbsp;</a>
+    <a href="{{ route('memberIndex') }}" class="back"></a>
 </header>
 <div class="comheadbg"></div>
 
 <div class="ordertit">
     <section>
-        <a href="#">全部</a>
-        <a class="sel" href="#">待我处理</a>
-        <a href="#">待卖家处理</a>
-        <a href="#">已取消</a>
-        <a href="#">已完成</a>
+        <a class="{{ active_class(if_query('status', null), 'sel') }}" href="{{ url()->current() }}">全部</a>
+        @foreach($statuses as $status)
+            @if($status['forUser'])
+            <a class="{{ active_class(if_query('status', $status['id']), 'sel') }}" href="{{ url()->current() }}?status={{ $status['id'] }}">{{ $status['name'] }}</a>
+            @endif
+        @endforeach
     </section>
 </div>
 <div class="clear h10"></div>
@@ -32,7 +32,7 @@
                     <i style="background-image: url({{ $order->image }})"></i>
                     <p class="p1">{{ $order->name }}</p>
                     {{--<p class="p2">作者名字<span>人民教育出版社</span></p>--}}
-                    <p class="p6">订单号：{{ $order->sn }}</p>
+                    <p class="p6">单号：{{ $order->sn }}</p>
                 </div>
             </a>
         </div>

@@ -24,7 +24,8 @@ class IndexController extends Controller
     //会员中心首页
     public function memberIndex(){
         $user = Auth::user();
-        return view('index.member_index', compact('user'));
+        $statuses = config('custom.order.status');
+        return view('index.member_index', compact('user', 'statuses'));
     }
 
     //选择学校页面

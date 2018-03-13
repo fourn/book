@@ -8,13 +8,31 @@ use App\Models\Order;
 
 class OrderPolicy extends Policy
 {
-    public function pay(User $user, Order $order){
-        $canBuy = $user->can('buy', $order->book);
-        return $user->isAuthOf($order) && $canBuy && $order->status == 1;
-    }
 
+    //查看详情
     public function show(User $user, Order $order){
         return $user->isAuthOf($order);
+    }
+
+    //买家发起支付
+    public function pay(User $user, Order $order){
+        $canBuy = $user->can('buy', $order->book);
+        return $user->isAuthOf($order) and $canBuy and $order->status == 1;
+    }
+
+    //卖家确认订单
+    public function confirm(User $user, Order $order){
+        return $user->id == $order->seller_id and $order->status == 2;
+    }
+
+    //卖家确认送达
+    public function send(User $user, Order $order){
+         return $user->id == $order->seller_id and $order->status == 3;
+    }
+
+    //买家取书
+    public function get(User $user, Order $order){
+        return $user->isAuthOf($order) and $order->status == 4;
     }
 
     public function update(User $user, Order $order)

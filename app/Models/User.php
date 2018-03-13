@@ -7,7 +7,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable {
+        notify as protected laravelNotify;
+    }
+
+    public function notify($instance)
+    {
+        $this->increment('notification_count');
+        $this->laravelNotify($instance);
+    }
 
     /**
      * The attributes that are mass assignable.

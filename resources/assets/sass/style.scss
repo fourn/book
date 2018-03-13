@@ -464,7 +464,7 @@ textarea.textarea { border:none; background:none;}
   position: fixed; z-index: 80; left: 0; top: 1rem; background: $col02; width: 100%; height: $num03; line-height: $num03; overflow: hidden; border-bottom: 1px solid $col06;
   section { width: 110%; overflow: hidden;}
   a {
-    display: inline-block; float: left;height: $num03; line-height: $num03; margin-left: 0.4rem;
+    display: inline-block; float: left;height: $num03; line-height: $num03; padding: 0 .34rem;
     &.sel {
       color: $col03;
       &:after {content: "";display: block;width:100%;position: absolute;bottom: 0;left:0;height: 0.07rem;background: $col03;}

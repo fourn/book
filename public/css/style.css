@@ -1713,7 +1713,7 @@ textarea.textarea {
   float: left;
   height: 1rem;
   line-height: 1rem;
-  margin-left: 0.4rem;
+  padding: 0 .34rem;
 }
 
 .ordertit a.sel {

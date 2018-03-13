@@ -7,28 +7,38 @@ use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\OrderRequest;
 use Auth;
 
 class OrdersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth');
     }
 
-	public function index()
+    //买家列表
+	public function index(Request $request)
 	{
 	    $user = Auth::user();
-		$orders = $user->orders()->orderBy('created_at', 'desc')->with('seller')->get();
-		return view('orders.index', compact('orders'));
+	    $status = $request->status;
+		$orders = $user->orders()
+            ->when($status, function ($query) use ($status){
+                return $query->where('status', $status);
+            })
+            ->orderBy('created_at', 'desc')
+            ->with('seller')
+            ->get();
+		$statuses = config('custom.order.status');
+		return view('orders.index', compact('orders', 'statuses'));
 	}
 
+	//卖家列表
 	public function sellerIndex(){
         $orders = Order::paginate();
         return view('orders.index', compact('orders'));
     }
 
+    //买家详情
     public function show(Order $order)
     {
         $this->authorize('show', $order);
@@ -37,11 +47,12 @@ class OrdersController extends Controller
         return view('orders.show', compact('order', 'school', 'seller'));
     }
 
+    //卖家详情
     public function sellerShow(Order $order){
         return view('orders.show', compact('order'));
     }
 
-    //订单确认
+    //确认下单
 	public function create(Order $order, Book $book)
 	{
         $this->authorize('buy', $book);
@@ -71,35 +82,16 @@ class OrdersController extends Controller
     }
 
     public function fakePay(Request $request){
-        if(config('order_fake_pay') != 'on'){
-            return abort(404);
-        }
+        if(config('order_fake_pay') != 'on')return abort(404);
         $order = Order::where('sn' ,$request->sn)->firstOrFail();
-        $out_sn = $order->createSn();
-        $payed_at = Carbon::now()->toDateTimeString();
-        $order->payed($out_sn, $payed_at, $order->price);
-        return redirect()->route('order.index');
+        $this->authorize('pay', $order);
+        $order->payed($order->createSn(), Carbon::now()->toDateTimeString(), $order->price);
+        return redirect()->route('order.show', $order->id);
     }
 
-	public function edit(Order $order)
-	{
-        $this->authorize('update', $order);
-		return view('orders.create_and_edit', compact('order'));
-	}
 
-	public function update(OrderRequest $request, Order $order)
-	{
-		$this->authorize('update', $order);
-		$order->update($request->all());
 
-		return redirect()->route('orders.show', $order->id)->with('message', 'Updated successfully.');
-	}
 
-	public function destroy(Order $order)
-	{
-		$this->authorize('destroy', $order);
-		$order->delete();
 
-		return redirect()->route('orders.index')->with('message', 'Deleted successfully.');
-	}
+
 }

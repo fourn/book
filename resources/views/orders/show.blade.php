@@ -59,8 +59,13 @@
 <div class="clear h10"></div>
 <footer class="orderfoot">
     <p class="p1">订单金额：<span>￥{{ $order->price }}</span></p>
-    <input type="submit" value="确认收货" class="sub01" />
-    <input type="submit" value="取消订单" class="sub02" />
+    @can('pay', $order)
+        <a href="{{ $order->payLink() }}" class="sub01">支付</a>
+    @endcan
+    @can('get', $order)
+        <input type="submit" value="确认收货" class="sub01" />
+    @endcan
+    {{--<input type="submit" value="取消订单" class="sub02" />--}}
 </footer>
 
 @endsection

@@ -12,16 +12,32 @@
 </div>
 @include('public._message')
 <div class="membermenu">
-    <a href="#" class="a1">我下的订单<span>查看全部</span></a>
+    <a href="{{ route('order.index') }}" class="a1">我的买书<span>查看全部</span></a>
     <section class="tabfix">
         <menu>
-            <a href="#"><img src="images/ico/member01.png" /><p>待我处理</p></a>
-            <a href="#"><img src="images/ico/member02.png" /><p>待卖家处理</p></a>
-            <a href="#"><img src="images/ico/member03.png" /><p>已取消</p></a>
-            <a href="#"><img src="images/ico/member04.png" /><p>已完成</p></a>
+            @foreach($statuses as $status)
+                @if($status['forUser'])
+                <a href="{{ route('order.index') }}?status={{ $status['id'] }}"><img src="images/ico/{{ $status['ico'] }}" /><p>{{ $status['name'] }}</p></a>
+                @endif
+            @endforeach
         </menu>
     </section>
 </div>
+
+@if(count(Auth::user()->sellOrders))
+<div class="membermenu">
+    <a href="" class="a1">我的卖书<span>查看全部</span></a>
+    <section class="tabfix">
+        <menu>
+            @foreach($statuses as $status)
+                @if($status['forSeller'])
+                    <a href=""><img src="images/ico/{{ $status['ico'] }}" /><p>{{ $status['name'] }}</p></a>
+                @endif
+            @endforeach
+        </menu>
+    </section>
+</div>
+@endif
 <div class="clear h02"></div>
 <div class="memberbox">
     <a href="{{ route('books.my') }}" class="memberbtn">
