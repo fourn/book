@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('body', '')
 @section('content')
+@include('layouts._set_school')
 <header class="comhead">
     <h2>选择分类</h2>
     <a href="{{ route('index') }}" class="back"></a>
@@ -27,7 +28,7 @@
 </div>
 <p class="loading"><span>正在加载...</span></p>
 @include('layouts._footer')
-@include('layouts._set_school')
+
 @endsection
 @section('script')
 <script type="text/javascript">

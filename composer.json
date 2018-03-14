@@ -22,7 +22,8 @@
         "mews/purifier": "~2.0",
         "overtrue/laravel-lang": "~3.0",
         "predis/predis": "~1.0",
-        "toplan/laravel-sms": "~2.6"
+        "toplan/laravel-sms": "~2.6",
+        "viacreative/sudo-su": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "~3.1",

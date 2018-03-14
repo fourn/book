@@ -67,7 +67,7 @@ return [
     'code' => [
         'length'        => 5,
         'validMinutes'  => 5,
-        'repeatIfValid' => false,
+        'repeatIfValid' => true,
         'maxAttempts'   => 3,
     ],
 
@@ -80,7 +80,7 @@ return [
     |
     */
     'content' => function ($code, $minutes, $input) {
-        return '【signature】您的验证码是' . $code . '，有效期为' . $minutes . '分钟，请尽快验证。';
+        return '【淘书屋】您的验证码是' . $code . '，有效期为' . $minutes . '分钟，请尽快验证。';
     },
 
     /*

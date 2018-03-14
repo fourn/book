@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('layouts._set_school')
     <header class="comhead">
         <p class="btn01" onclick="$('#set_school').show()">{{ isset($sessionSchool) ? $sessionSchool->name : '请选择'}}</p>
         <div class="box01">
@@ -159,7 +160,7 @@
     </div>
 
     @include('layouts._footer')
-    @include('layouts._set_school')
+
 @endsection
 @section('script')
 <script type="text/javascript">

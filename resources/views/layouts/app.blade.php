@@ -63,6 +63,12 @@
             });
         });
     </script>
+    @auth
+        @if (app()->isLocal())
+            @include('sudosu::user-selector')
+        @endif
+    @endauth
+
 @yield('script')
 </body>
 </html>

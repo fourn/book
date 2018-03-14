@@ -22,7 +22,7 @@ return [
      *
      */
     'scheme' => [
-//        'Aliyun'=>'100',
+//        'SmsBao'=>'100',
         'Log'=>'100',
     ],
 
@@ -170,9 +170,9 @@ return [
          */
         'SmsBao' => [
             //注册账号
-            'username'  => 'your_username',
+            'username'  => '13759138797',
             //账号密码（明文）
-            'password'  => 'your_password',
+            'password'  => 'ynyes3157517',
         ],
 
         /*
