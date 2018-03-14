@@ -9,6 +9,11 @@ use App\Notifications\OrderSend;
 
 class Order extends Model
 {
+    const OPERATOR_USER = 1;
+    const OPERATOR_SELLER = 2;
+    const OPERATOR_ADMIN = 3;
+    const OPERATOR_SYSTEM = 4;
+
     protected $fillable = ['message'];
 
     public function user(){
@@ -28,7 +33,7 @@ class Order extends Model
     }
 
     public function orderLogs(){
-        return $this->hasMany(OrderLogs::class);
+        return $this->hasMany(OrderLog::class);
     }
 
     public function getStatusNameAttribute()
@@ -53,6 +58,10 @@ class Order extends Model
         return date('YmdHis', time()).random_int(10, 99);
     }
 
+    public function log($operator){
+        (new OrderLog())->log($this, $operator);
+    }
+
     //创建订单
     public function createOrder(User $user ,Book $book, $message = null){
         $this->sn = $this->createSn();
@@ -66,6 +75,7 @@ class Order extends Model
         $this->image = $book->image;
         $this->status = 1;
         $this->save();
+        $this->log(self::OPERATOR_USER);
         return $this;
     }
 
@@ -76,7 +86,8 @@ class Order extends Model
         $this->payed_at = $payed_at;
         $this->out_sn = $out_sn;
         $this->save();
-        (new OrderLog())->log($this, OrderLog::OPERATOR_USER);
+        $this->book->payed();
+        $this->log(self::OPERATOR_USER);
         $this->seller->notify(new OrderPayed($this));
         return $this;
     }
@@ -85,7 +96,7 @@ class Order extends Model
     public function confirm(){
         $this->status = 3;
         $this->save();
-        (new OrderLog())->log($this, OrderLog::OPERATOR_SELLER);
+        $this->log(self::OPERATOR_SELLER);
         $this->user->notify(new OrderConfirmed($this));
         return $this;
     }
@@ -94,7 +105,7 @@ class Order extends Model
     public function send(){
         $this->status = 4;
         $this->save();
-        (new OrderLog())->log($this, OrderLog::OPERATOR_SELLER);
+        $this->log(self::OPERATOR_SELLER);
         $this->user->notify(new OrderSend($this));
         return $this;
     }
@@ -103,7 +114,7 @@ class Order extends Model
     public function finish(){
         $this->status = 5;
         $this->save();
-        (new OrderLog())->log($this, OrderLog::OPERATOR_USER);
+        $this->log(self::OPERATOR_USER);
         $this->user->notify(new OrderFinish($this));
         return $this;
     }
@@ -112,7 +123,7 @@ class Order extends Model
     public function cancel(){
         $this->status = 6;
         $this->save();
-        (new OrderLog())->log($this, OrderLog::OPERATOR_ADMIN);
+        $this->log(self::OPERATOR_ADMIN);
         return $this;
     }
 
@@ -120,7 +131,7 @@ class Order extends Model
     public function out(){
         $this->status = 7;
         $this->save();
-        (new OrderLog())->log($this, OrderLog::OPERATOR_SYSTEM);
+        $this->log(self::OPERATOR_SYSTEM);
         return $this;
     }
 }

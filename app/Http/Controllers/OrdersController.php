@@ -81,6 +81,7 @@ class OrdersController extends Controller
         return view('orders.pay', compact('order'));
     }
 
+    //模拟支付
     public function fakePay(Request $request){
         if(config('order_fake_pay') != 'on')return abort(404);
         $order = Order::where('sn' ,$request->sn)->firstOrFail();

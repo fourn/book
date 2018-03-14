@@ -2,7 +2,7 @@
 @section('body', '')
 @section('content')
 <header class="comhead">
-    <h2>系统消息</h2>
+    <h2>消息通知</h2>
     <a href="javascript:history.back();" class="back"></a>
 </header>
 <div class="comheadbg"></div>

@@ -17,6 +17,7 @@
         "laravel-admin-ext/media-manager": "^1.0",
         "laravel-admin-ext/scheduling": "^1.0",
         "laravel/framework": "5.5.*",
+        "laravel/horizon": "~1.0",
         "laravel/tinker": "~1.0",
         "mews/purifier": "~2.0",
         "overtrue/laravel-lang": "~3.0",

@@ -65,4 +65,8 @@ class User extends Authenticatable
         $this->save();
         $this->unreadNotifications->markAsRead();
     }
+
+    public function routeNotificationForSms(){
+        return $this->mobile;
+    }
 }

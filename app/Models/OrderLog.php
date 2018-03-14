@@ -9,11 +9,6 @@ class OrderLog extends Model
 {
     public $fillable = [''];
 
-    const OPERATOR_USER = 1;
-    const OPERATOR_SELLER = 2;
-    const OPERATOR_ADMIN = 3;
-    const OPERATOR_SYSTEM = 4;
-
     public function order(){
         return $this->belongsTo(Order::class);
     }
@@ -34,10 +29,10 @@ class OrderLog extends Model
 
     public function log(Order $order, $operator){
         switch ($operator){
-            case self::OPERATOR_USER:$operator_id = $order->user_id;break;
-            case self::OPERATOR_SELLER:$operator_id = $order->seller_id;break;
-            case self::OPERATOR_ADMIN:$operator_id = Admin::user()->id;break;
-            case self::OPERATOR_SYSTEM:$operator_id = 0;break;
+            case $order::OPERATOR_USER:$operator_id = $order->user_id;break;
+            case $order::OPERATOR_SELLER:$operator_id = $order->seller_id;break;
+            case $order::OPERATOR_ADMIN:$operator_id = Admin::user()->id;break;
+            case $order::OPERATOR_SYSTEM:$operator_id = 0;break;
         }
         $this->order_id = $order->id;
         $this->order_status = $order->status;

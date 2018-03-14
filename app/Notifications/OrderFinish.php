@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Channels\SmsChannel;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -13,7 +14,7 @@ class OrderFinish extends Notification
     use Queueable;
 
     public $order;
-
+    public $message;
     /**
      * Create a new notification instance.
      * 资金已入账
@@ -23,6 +24,7 @@ class OrderFinish extends Notification
     {
         //
         $this->order = $order;
+        $this->message = config('notify_order_finish');
     }
 
     /**
@@ -33,7 +35,11 @@ class OrderFinish extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', SmsChannel::class];
+    }
+
+    public function toSms($notifiable){
+        return $this->message;
     }
 
     public function toDatabase($notifiable){
@@ -42,7 +48,7 @@ class OrderFinish extends Notification
             'order_sn'=>$this->order->sn,
             'order_link'=>$this->order->sellerLink(),
             'order_price'=>$this->order->price,
-            'message'=>config('notify_order_finish'),
+            'message'=>$this->message,
             //TODO 这里应该显示实际转入的金额
         ];
     }

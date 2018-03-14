@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Channels\SmsChannel;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -12,6 +13,7 @@ class OrderSend extends Notification
 {
     use Queueable;
     public $order;
+    public $message;
     /**
      * Create a new notification instance.
      * 已送达请取书
@@ -21,6 +23,7 @@ class OrderSend extends Notification
     {
         //
         $this->order = $order;
+        $this->message = config('notify_order_send');
     }
 
     /**
@@ -31,7 +34,11 @@ class OrderSend extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', SmsChannel::class];
+    }
+
+    public function toSms(){
+        return $this->message;
     }
 
     public function toDatabase($notifiable){
@@ -41,7 +48,7 @@ class OrderSend extends Notification
             'order_sn'=>$this->order->sn,
             'order_link'=>$this->order->userLink(),
             'depot'=>$depot,
-            'message'=>config('notify_order_send'),
+            'message'=>$this->message,
         ];
     }
 

@@ -186,6 +186,9 @@ return [
 
         //view-composer 注册视图合成器
         App\Providers\ComposerServiceProvider::class,
+
+        //短信
+        Toplan\PhpSms\PhpSmsServiceProvider::class,
     ],
 
     /*
@@ -238,6 +241,8 @@ return [
         //laravel-sms
         'PhpSms' => Toplan\PhpSms\Facades\Sms::class,
         'SmsManager' => Toplan\Sms\Facades\SmsManager::class,
+
+        
     ],
 
 ];

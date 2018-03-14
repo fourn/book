@@ -51,5 +51,7 @@ class Book extends Model
         return $statuses[$this->status];
     }
 
-
+    public function payed(){
+        $this->update(['status'=>4]);
+    }
 }

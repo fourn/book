@@ -2,16 +2,18 @@
 
 namespace App\Notifications;
 
+use App\Channels\SmsChannel;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OrderPayed extends Notification
+class OrderPayed extends Notification implements ShouldQueue
 {
     use Queueable;
     public $order;
+    public $message;
     /**
      * Create a new notification instance.
      * 已售出请确认
@@ -21,9 +23,10 @@ class OrderPayed extends Notification
     {
         //
         $this->order = $order;
+        $this->message = config('notify_order_payed');
     }
 
-    /**o
+    /**
      * Get the notification's delivery channels.
      *
      * @param  mixed  $notifiable
@@ -31,7 +34,11 @@ class OrderPayed extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', SmsChannel::class];
+    }
+
+    public function toSms($notifiable){
+        return $this->message;
     }
 
     public function toDatabase($notifiable){
@@ -41,7 +48,7 @@ class OrderPayed extends Notification
             'order_sn'=>$this->order->sn,
             'order_link'=>$this->order->sellerLink(),
             'depot'=>$depot,
-            'message'=>config('notify_order_payed'),
+            'message'=>$this->message,
         ];
     }
 
