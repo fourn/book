@@ -52,6 +52,7 @@ class Book extends Model
     }
 
     public function payed(){
-        $this->update(['status'=>4]);
+        $this->status = 4;
+        $this->save();
     }
 }

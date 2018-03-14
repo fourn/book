@@ -15,18 +15,14 @@ class BookObserver
     }
 
     public function saved(Book $book){
+        //书本被修改或者购买后
         if($book->status != 2){
             dispatch(new EditBook($book));
         }
     }
 
-    public function creating(Book $book)
-    {
-        //
-    }
-
-    public function updating(Book $book)
-    {
-        //
+    public function deleted(Book $book){
+        //书本删除后
+        dispatch(new EditBook($book));
     }
 }
