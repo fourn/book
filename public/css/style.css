@@ -312,6 +312,22 @@ textarea.textarea {
   color: #27b7ff;
 }
 
+.foottab .tabfix a b {
+  position: absolute;
+  left: 50%;
+  top: 0.1rem;
+  right: auto;
+  bottom: auto;
+  margin-left: 0.1rem;
+  color: #fff;
+  background: #ff3366;
+  padding: 0 0.1rem;
+  border-radius: 0.225rem;
+  font-weight: 400;
+  font-size: 0.21rem;
+  line-height: 0.35rem;
+}
+
 .foottab .tabfix a span {
   display: inline-block;
   padding-top: 0.7rem;
@@ -743,7 +759,7 @@ textarea.textarea {
   padding-bottom: 0.25rem;
 }
 
-.prolist i {
+.prolist i, .prolist .img {
   display: block;
   position: absolute;
   left: 0px;
@@ -767,6 +783,7 @@ textarea.textarea {
   white-space: nowrap;
   text-overflow: ellipsis;
   padding: 0.2rem 0 0.1rem;
+  display: block;
 }
 
 .prolist .box .p2 {
@@ -868,6 +885,29 @@ textarea.textarea {
 
 .prolist .box .p8 a.btn04 {
   background: #df0716;
+}
+
+.prolist .box .p9 {
+  top: 0;
+  padding-top: 0.1rem;
+}
+
+.prolist .box .p10 {
+  padding-top: 0.2rem;
+  text-align: right;
+}
+
+.prolist .box .p10 a {
+  display: inline-block;
+  padding: 0 0.2rem;
+  color: #fff;
+  background: #27b7ff;
+  margin-left: 0.2rem;
+  line-height: 0.54rem;
+}
+
+.prolist .box .p10 a.btn02 {
+  background: #999;
 }
 
 .prolist .box .green {
@@ -1650,6 +1690,22 @@ textarea.textarea {
   height: 0.95rem;
 }
 
+.membermenu section a b {
+  position: absolute;
+  left: 50%;
+  top: 0.3rem;
+  right: auto;
+  bottom: auto;
+  margin-left: 0.25rem;
+  color: #fff;
+  background: #ff3366;
+  padding: 0 0.1rem;
+  border-radius: 0.225rem;
+  font-weight: 400;
+  font-size: 0.24rem;
+  line-height: 0.35rem;
+}
+
 .memberbtn {
   display: block;
   background: #fff;
@@ -2087,12 +2143,17 @@ textarea.textarea {
   width: 88%;
   padding: 0.15rem 3%;
   background: #fff;
-  margin: 0 auto 0.2rem;
+  margin: 0.2rem auto 0;
 }
 
 .newslist a {
   display: block;
   color: #27b7ff;
+}
+
+.newslist .p2 {
+  text-align: right;
+  color: #999;
 }
 
 .noticebox {

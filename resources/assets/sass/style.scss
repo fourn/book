@@ -56,6 +56,7 @@ textarea.textarea { border:none; background:none;}
     a {
       display: table-cell; text-align: center;height:1.2rem; overflow: hidden; color: $col08; font-size: 0.26rem;
       &.sel { color: $col03;}
+      b {@include _absolute(50%,0.1rem); margin-left: 0.1rem; color: $col02; background: $col04; padding: 0 0.1rem; border-radius: $num02/2; font-weight: 400; font-size: $num01*0.7; line-height: 0.35rem;}
       span {
         display: inline-block; padding-top: 0.7rem; background: url("../images/foot01.png") no-repeat  center 0.2rem; background-size: auto 0.55rem;
       }
@@ -179,10 +180,10 @@ textarea.textarea { border:none; background:none;}
 }
 .prolist {
   display: block;@include _main(); border-bottom: 1px solid $col06; overflow: hidden; padding-top: 0.25rem;padding-bottom: 0.25rem;
-  i {display: block;@include _absolute(); width: 2rem; height: 2.6rem; background: url("../images/photo/img01.png") no-repeat center center; background-size: cover;}
+  i,.img {display: block;@include _absolute(); width: 2rem; height: 2.6rem; background: url("../images/photo/img01.png") no-repeat center center; background-size: cover;}
   .box {
     padding-left: 2.5rem; min-height: 2.6rem;
-    .p1 { font-size: $num04;@include  _textover(); padding: 0.2rem 0 0.1rem;}
+    .p1 { font-size: $num04;@include  _textover(); padding: 0.2rem 0 0.1rem; display: block;}
     .p2 {color:$col08; padding:0.05rem 0 0.2rem 0;@include _textover(); line-height: 0.3rem;
       span { margin-left: 0.2rem; padding-left:0.2rem;display: inline-block; border-left: 1px solid $col06;}
     }
@@ -206,6 +207,14 @@ textarea.textarea { border:none; background:none;}
         &.btn02 { background: $col03;}
         &.btn03 { background: $col04;}
         &.btn04 { background: #df0716;}
+      }
+    }
+    .p9 { top:0;padding-top: 0.1rem;}
+    .p10 {
+      padding-top: 0.2rem; text-align: right;
+      a {
+        display: inline-block; padding: 0 0.2rem; color: $col02; background: $col03; margin-left: 0.2rem; line-height: $num02*1.2;
+        &.btn02 { background: $col08;}
       }
     }
     .green { color: $col09;}
@@ -443,6 +452,7 @@ textarea.textarea { border:none; background:none;}
     a {
       display: table-cell; text-align: center; padding: 0.4rem 0 0.2rem; color: $col08; font-size: $num01*0.9;
       img { height:0.95rem;}
+      b {@include _absolute(50%,0.3rem); margin-left: 0.25rem; color: $col02; background: $col04; padding: 0 0.1rem; border-radius: $num02/2; font-weight: 400; font-size: $num01*0.8; line-height: 0.35rem;}
     }
   }
 }
@@ -566,9 +576,15 @@ textarea.textarea { border:none; background:none;}
   }
 }
 .newslist {
-  width: 88%; padding:0.15rem 3%; background: $col02; margin:0 auto 0.2rem;
+  width: 88%; padding:0.15rem 3%; background: $col02; margin:0.2rem auto 0;
   a {
     display: block; color: $col03;
+  }
+  .p1 {
+
+  }
+  .p2 {
+    text-align: right; color: #999;
   }
 }
 .noticebox {

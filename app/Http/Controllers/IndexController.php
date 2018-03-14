@@ -17,7 +17,9 @@ class IndexController extends Controller
 
     //首页
     public function index(){
-        $sessionSchool = School::find(session('school_id'));
+        if(session()->has('school_id')){
+            $sessionSchool = School::find(session('school_id'));
+        }
         return view('index.index', compact('sessionSchool'));
     }
 

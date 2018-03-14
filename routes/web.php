@@ -56,3 +56,6 @@ Route::prefix('order')->group(function (){
     Route::get('show/{order}', 'OrdersController@show')->name('order.show');
     Route::get('seller/show/{order}', 'OrdersController@sellerShow')->name('order.seller_show');
 });
+
+//消息
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);

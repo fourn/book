@@ -58,4 +58,11 @@ class User extends Authenticatable
     public function isAuthOf($model){
         return $model->user_id == $this->id;
     }
+
+    public function markAsRead()
+    {
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
+    }
 }

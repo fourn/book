@@ -1,0 +1,1 @@
+<div class="newslist">{{ $notification->data['message'] }}</div>
