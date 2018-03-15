@@ -19,10 +19,10 @@ class AppServiceProvider extends ServiceProvider
 		\App\Models\Order::observe(\App\Observers\OrderObserver::class);
 		\App\Models\Book::observe(\App\Observers\BookObserver::class);
 
-        //后台配置
+        //加载后台配置
         Config::load();
 
-        //本地化
+        //时间本地化
         Carbon::setLocale('zh');
     }
 

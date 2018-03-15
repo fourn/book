@@ -34,7 +34,7 @@ class PassportController extends Controller
      */
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
-            'mobile'     => 'required|confirm_mobile_not_change|confirm_rule:check_mobile_unique',
+            'mobile'     => 'required|confirm_mobile_not_change',
             'verifyCode' => 'required|verify_code',
             'password' => 'required|min:6',
         ]);

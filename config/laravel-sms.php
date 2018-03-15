@@ -67,8 +67,8 @@ return [
     'code' => [
         'length'        => 5,
         'validMinutes'  => 5,
-        'repeatIfValid' => true,
-        'maxAttempts'   => 3,
+        'repeatIfValid' => false,
+        'maxAttempts'   => 0,
     ],
 
     /*
