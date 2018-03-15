@@ -17,7 +17,7 @@ class OrderLog extends Model
     {
         $types = config('custom.order.logs');
         $types = array_pluck($types, 'name', 'id');
-        return $types[$this->status];
+        return $types[$this->order_status];
     }
 
     public function getOperatorNameAttribute()

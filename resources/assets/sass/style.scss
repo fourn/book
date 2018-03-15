@@ -383,6 +383,15 @@ textarea.textarea { border:none; background:none;}
       &.green { color: $col09;}
     }
   }
+  .box2{
+    min-height: 1rem;padding-right: 0.3rem;
+    p{
+      line-height:1rem;
+      span{
+        float: right;color: #999;
+      }
+    }
+  }
 }
 .paychoose {
   width:$width01+$width02; padding-left: $width02; background:$col02; overflow: hidden;

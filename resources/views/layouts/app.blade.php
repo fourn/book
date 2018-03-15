@@ -62,6 +62,11 @@
                 $(this).parents('section').remove();
             });
         });
+        function lc(_url, _title){
+            layer.confirm(_title, function (){
+                location.href=_url;
+            })
+        }
     </script>
     @auth
         @if (app()->isLocal())

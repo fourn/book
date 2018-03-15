@@ -14,6 +14,10 @@ class OrderPolicy extends Policy
         return $user->isAuthOf($order);
     }
 
+    public function seller_show(User $user, Order $order){
+        return $user->id == $order->seller_id;
+    }
+
     //买家发起支付
     public function pay(User $user, Order $order){
         $canBuy = $user->can('buy', $order->book);
@@ -33,6 +37,11 @@ class OrderPolicy extends Policy
     //买家取书
     public function get(User $user, Order $order){
         return $user->isAuthOf($order) and $order->status == 4;
+    }
+
+    //买家取消购买
+    public function cancel(User $user, Order $order){
+        return $user->isAuthOf($order) and $order->status == 1;
     }
 
     public function update(User $user, Order $order)

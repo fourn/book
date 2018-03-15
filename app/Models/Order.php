@@ -120,10 +120,10 @@ class Order extends Model
     }
 
     //取消
-    public function cancel(){
+    public function cancel($operator = self::OPERATOR_ADMIN){
         $this->status = 6;
         $this->save();
-        $this->log(self::OPERATOR_ADMIN);
+        $this->log($operator);
         return $this;
     }
 

@@ -6,7 +6,7 @@
     <a href="{{ route('order.index') }}" class="back"></a>
 </header>
 <div class="comheadbg"></div>
-
+@include('public._message')
 <img src="/images/address.png" class="w100 block" />
 <a class="top_address">
     <span>取货</span>
@@ -51,21 +51,38 @@
     </div>--}}
     <div class="box">
         <span class="sp1">买家留言：</span>
-        <p class="p1">{{ $order->message }}</p>
+    </div>
+    <div class="box2">
+        <p>{{ $order->message }}</p>
     </div>
 </section>
 <div class="clear h02"></div>
+
+<section class="order_btn">
+    <div class="box">
+        <span class="sp1">订单日志：</span>
+    </div>
+    <div class="box2">
+        @if($logs)
+            @foreach ($logs as $log)
+                <p>{{ $log->name }}<span>{{ $log->created_at->diffForHumans() }}-{{ $log->operator_name }}</span></p>
+            @endforeach
+        @endif
+    </div>
+</section>
 
 <div class="clear h10"></div>
 <footer class="orderfoot">
     <p class="p1">订单金额：<span>￥{{ $order->price }}</span></p>
     @can('pay', $order)
-        <a href="{{ $order->payLink() }}" class="sub01">支付</a>
+        <a href="{{ $order->payLink() }}" class="sub01">前往支付</a>
     @endcan
     @can('get', $order)
-        <input type="submit" value="确认收货" class="sub01" />
+        <a onclick="lc('{{ route('order.get', $order) }}', '请确认您已拿到书本？')" class="sub01">确认取书</a>
     @endcan
-    {{--<input type="submit" value="取消订单" class="sub02" />--}}
+    @can('cancel', $order)
+        <a onclick="lc('{{ route('order.cancel', $order) }}', '您确认取消订单？')" class="sub02">取消订单</a>
+    @endcan
 </footer>
 
 @endsection

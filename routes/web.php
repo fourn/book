@@ -47,14 +47,19 @@ Route::resource('books', 'BooksController', ['only' => ['index', 'show', 'create
 Route::prefix('order')->group(function (){
     Route::get('create/{book}', 'OrdersController@create')->name('order.create');
     Route::post('store', 'OrdersController@store')->name('order.store');
-    Route::get('pay/{order}' ,'OrdersController@pay')->name('order.pay');
-    Route::get('fake_pay', 'OrdersController@fakePay')->name('order.fake_pay');
     //列表
     Route::get('index', 'OrdersController@index')->name('order.index');
     Route::get('seller/index', 'OrdersController@sellerIndex')->name('order.seller_index');
     //详情
     Route::get('show/{order}', 'OrdersController@show')->name('order.show');
     Route::get('seller/show/{order}', 'OrdersController@sellerShow')->name('order.seller_show');
+    //操作
+    Route::get('pay/{order}' ,'OrdersController@pay')->name('order.pay');//发起支付
+    Route::get('fake_pay', 'OrdersController@fakePay')->name('order.fake_pay');//模拟支付成功
+    Route::get('confirm/{order}', 'OrdersController@confirm')->name('order.confirm');//卖家确认
+    Route::get('send/{order}', 'OrdersController@send')->name('order.send');//卖家送达
+    Route::get('get/{order}', 'OrdersController@get')->name('order.get');//买家取书
+    Route::get('cancel/{order}', 'OrdersController@cancel')->name('order.cancel');//买家取消
 });
 
 //消息

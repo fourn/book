@@ -33,9 +33,18 @@ class OrdersController extends Controller
 	}
 
 	//卖家列表
-	public function sellerIndex(){
-        $orders = Order::paginate();
-        return view('orders.index', compact('orders'));
+	public function sellerIndex(Request $request){
+        $user = Auth::user();
+        $status = $request->status;
+        $orders = $user->sellOrders()
+            ->when($status, function ($query) use ($status){
+                return $query->where('status', $status);
+            })
+            ->orderBy('created_at', 'desc')
+            ->with('seller')
+            ->get();
+        $statuses = config('custom.order.status');
+        return view('orders.seller_index', compact('orders', 'statuses'));
     }
 
     //买家详情
@@ -44,12 +53,17 @@ class OrdersController extends Controller
         $this->authorize('show', $order);
         $school = $order->school;
         $seller = $order->seller;
-        return view('orders.show', compact('order', 'school', 'seller'));
+        $logs = $order->orderLogs;
+        return view('orders.show', compact('order', 'school', 'seller', 'logs'));
     }
 
     //卖家详情
     public function sellerShow(Order $order){
-        return view('orders.show', compact('order'));
+        $this->authorize('seller_show', $order);
+        $school = $order->school;
+        $buyer = $order->user;
+        $logs = $order->orderLogs;
+        return view('orders.seller_show', compact('order', 'school', 'buyer', 'logs'));
     }
 
     //确认下单
@@ -87,10 +101,34 @@ class OrdersController extends Controller
         $order = Order::where('sn' ,$request->sn)->firstOrFail();
         $this->authorize('pay', $order);
         $order->payed($order->createSn(), Carbon::now()->toDateTimeString(), $order->price);
-        return redirect()->route('order.show', $order->id);
+        return redirect()->to($order->userLink())->with('message', '支付成功');
     }
 
+    //卖家确认
+    public function confirm(Order $order){
+        $this->authorize('confirm', $order);
+        $order->confirm();
+        return redirect()->to($order->sellerLink())->with('message', '订单已确认！');
+    }
 
+    //卖家送达
+    public function send(Order $order){
+        $this->authorize('send', $order);
+        $order->send();
+        return redirect()->to($order->sellerLink())->with('message', '书本已确认送达！');
+    }
+
+    public function get(Order $order){
+        $this->authorize('get', $order);
+        $order->finish();
+        return redirect()->to($order->userLink())->with('message', '确认收货成功！');
+    }
+
+    public function cancel(Order $order){
+        $this->authorize('cancel', $order);
+        $order->cancel($order::OPERATOR_USER);
+        return redirect()->to($order->userLink())->with('message', '订单已取消！');
+    }
 
 
 

@@ -1412,6 +1412,20 @@ textarea.textarea {
   color: #32d7ac;
 }
 
+.order_btn .box2 {
+  min-height: 1rem;
+  padding-right: 0.3rem;
+}
+
+.order_btn .box2 p {
+  line-height: 1rem;
+}
+
+.order_btn .box2 p span {
+  float: right;
+  color: #999;
+}
+
 .paychoose {
   width: 96%;
   padding-left: 4%;
