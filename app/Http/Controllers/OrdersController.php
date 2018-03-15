@@ -118,12 +118,17 @@ class OrdersController extends Controller
         return redirect()->to($order->sellerLink())->with('message', '书本已确认送达！');
     }
 
+    //买家收货+转账
     public function get(Order $order){
         $this->authorize('get', $order);
         $order->finish();
+
+        $order->commission();
+
         return redirect()->to($order->userLink())->with('message', '确认收货成功！');
     }
 
+    //买家取消
     public function cancel(Order $order){
         $this->authorize('cancel', $order);
         $order->cancel($order::OPERATOR_USER);

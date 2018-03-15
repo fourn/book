@@ -55,6 +55,14 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, 'seller_id');
     }
 
+    public function accounts(){
+        return $this->hasMany(UserAccounts::class);
+    }
+
+    public function transfers(){
+        return $this->hasMany(Transfer::class);
+    }
+
     public function isAuthOf($model){
         return $model->user_id == $this->id;
     }
@@ -68,5 +76,35 @@ class User extends Authenticatable
 
     public function routeNotificationForSms(){
         return $this->mobile;
+    }
+
+    //资金增加
+    public function addBalance($amount, $type = 1, $link = null){
+
+        $this->increment('balance', $amount);
+        $account = new UserAccounts([
+            'amount'=>$amount,
+            'user_id'=>$this->id,
+            'user_balance'=>$this->balance,
+            'type'=>$type,
+            'link'=>json_encode($link)
+        ]);
+        $this->accounts()->save($account);
+        return true;
+    }
+
+    //减少
+    public function cutBalance($amount, $type = 2, $link = null){
+        if($this->balance < $amount)return false;
+        $this->decrement('balance', $amount);
+        $account = new UserAccounts([
+            'amount'=>$amount,
+            'user_id'=>$this->id,
+            'user_balance'=>$this->balance,
+            'type'=>$type,
+            'link'=>json_encode($link)
+        ]);
+        $this->accounts()->save($account);
+        return true;
     }
 }

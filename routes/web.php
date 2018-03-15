@@ -64,3 +64,10 @@ Route::prefix('order')->group(function (){
 
 //消息
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+
+//提现
+Route::resource('transfers', 'TransfersController', ['only' => ['create', 'store']]);
+
+//资金
+Route::get('account', 'AccountsController@index')->name('account.index');
+Route::get('account/logs', 'AccountsController@logs')->name('account.logs');

@@ -119,6 +119,15 @@ class Order extends Model
         return $this;
     }
 
+    public function commission(){
+        //转账代码如下
+        $commission = config('commission');
+        $commission_user = $this->price * ( ( 100 - $commission ) / 100 );
+        $commission_system = $this->price * ( $commission / 100 );
+        $this->update(compact('commission_user', 'commission_system'));
+        $this->seller->addBalance($commission_user, 1, $this->toArray());
+    }
+
     //取消
     public function cancel($operator = self::OPERATOR_ADMIN){
         $this->status = 6;

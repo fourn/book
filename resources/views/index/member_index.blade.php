@@ -58,7 +58,7 @@
     {{--<a href="#" class="memberbtn">
         <p><i style="background-image: url(images/ico/member06.png)"></i>收到的订单</p>
     </a>--}}
-    <a href="#" class="memberbtn">
+    <a href="{{ route('account.index') }}" class="memberbtn">
         <p><i style="background-image: url(images/ico/member07.png)"></i>资金账户</p>
     </a>
     <a href="#" class="memberbtn">
