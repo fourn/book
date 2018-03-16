@@ -14,6 +14,7 @@
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('memberIndex', 'IndexController@memberIndex')->name('memberIndex');
 Route::get('setSchool/{id}', 'IndexController@setSchool')->name('setSchool');
+Route::get('search', 'IndexController@search')->name('search');
 
 //登录注册
 Route::get('register', 'PassportController@showRegisterForm')->name('passport.register');

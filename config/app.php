@@ -189,6 +189,9 @@ return [
 
         //短信
         Toplan\PhpSms\PhpSmsServiceProvider::class,
+
+        //全文搜索
+        Laravel\Scout\ScoutServiceProvider::class,
     ],
 
     /*
@@ -242,7 +245,7 @@ return [
         'PhpSms' => Toplan\PhpSms\Facades\Sms::class,
         'SmsManager' => Toplan\Sms\Facades\SmsManager::class,
 
-        
+
     ],
 
 ];

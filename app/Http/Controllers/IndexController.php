@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Order;
 use App\Models\School;
+use App\Models\Search;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class IndexController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth', ['except'=>[
-            'index', 'setSchool'
+            'index', 'setSchool', 'search'
         ]]);
     }
 
@@ -21,7 +23,11 @@ class IndexController extends Controller
         if(session()->has('school_id')){
             $sessionSchool = School::find(session('school_id'));
         }
-        return view('index.index', compact('sessionSchool'));
+        $books = Book::ofSchool()
+            ->forUser()
+            ->where('is_recommend', 1)
+            ->get();
+        return view('index.index', compact('sessionSchool', 'books'));
     }
 
     //会员中心首页
@@ -46,16 +52,34 @@ class IndexController extends Controller
         return view('index.member_index', compact('user', 'statuses', 'userOrderCount', 'sellerOrderCount', 'orderStatusCount', 'hasSell'));
     }
 
-    //选择学校页面
-    public function setSchool($school_id){
-        session(['school_id'=>$school_id]);
-        if(Auth::check()){
-            $user = Auth::user();
-            if(!$user->school_id){
-                $user->school_id = $school_id;
-                $user->save();
+    public function search(Request $request){
+        $books = [];
+        $searches = [];
+        $keywords = $request->keywords;
+        if($request->has('keywords')){
+
+            $books = Book::search($request->keywords)
+                ->where('school_id', session('school_id', 0))
+                ->where('is_show', 1)
+                ->where('status', 2)
+                ->get();
+            if(Auth::check()){
+                Auth::user()->searches()->save(new Search(['keywords'=>$request->keywords]));
             }
+
+        }else{
+
+            if(Auth::check()){
+                $searches = Auth::user()->searches()
+                    ->orderBy('created_at', 'desc')
+                    ->limit(6)
+                    ->get();
+            }
+
         }
-        return redirect()->intended(route('index'));
+
+        return view('index.search', compact('books', 'searches', 'keywords'));
     }
+
+
 }

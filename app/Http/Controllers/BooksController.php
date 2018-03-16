@@ -31,10 +31,10 @@ class BooksController extends Controller
 	{
 	    $category_id = $request->category_id;
 		$books = Book::ofSchool()
-            ->when($category_id, function ($query) use ($category_id){
-		    return $query->where('category_id', $category_id);
-        })
             ->forUser()
+            ->when($category_id, function ($query) use ($category_id){
+		        return $query->where('category_id', $category_id);
+            })
             ->orderBy(
             $request->input('orderBy', 'updated_at'),
             $request->input('orderType', 'desc')

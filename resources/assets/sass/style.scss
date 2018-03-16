@@ -249,9 +249,9 @@ textarea.textarea { border:none; background:none;}
   line-height: $num03;@include _center(); font-size: $num04;
 }
 .search_resurt {
-  border-bottom: 1px solid $col06; line-height: 0.9rem;height:0.9rem;@include _center();
+  border-bottom: 1px solid $col06; line-height: 0.9rem;height:0.9rem;@include _center();display: flex;justify-content: space-between;
   a {
-    display:block;@include _textover(); width: 90%;line-height:0.9rem; color: $col08;
+    display:block;@include _textover(); width: 70%;line-height:0.9rem; color: $col08;
   }
   i {
     display: block;@include _absolute(auto,0,0);height: 0.9rem; width: 0.5rem; z-index: 5; background: url("../images/clear.png") no-repeat center center; background-size: 50%;

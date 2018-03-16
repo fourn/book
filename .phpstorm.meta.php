@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-03-14 17:14:51.
+    * Generated on 2018-03-16 10:55:23.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -57,6 +57,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\SupervisorRepository' => \Laravel\Horizon\Repositories\RedisSupervisorRepository::class,
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
+        'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
         'Toplan\Sms\SmsManager' => \Toplan\Sms\SmsManager::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -209,6 +210,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\SupervisorRepository' => \Laravel\Horizon\Repositories\RedisSupervisorRepository::class,
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
+        'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
         'Toplan\Sms\SmsManager' => \Toplan\Sms\SmsManager::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -361,6 +363,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\SupervisorRepository' => \Laravel\Horizon\Repositories\RedisSupervisorRepository::class,
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
+        'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
         'Toplan\Sms\SmsManager' => \Toplan\Sms\SmsManager::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -513,6 +516,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\SupervisorRepository' => \Laravel\Horizon\Repositories\RedisSupervisorRepository::class,
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
+        'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
         'Toplan\Sms\SmsManager' => \Toplan\Sms\SmsManager::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -665,6 +669,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\SupervisorRepository' => \Laravel\Horizon\Repositories\RedisSupervisorRepository::class,
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
+        'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
         'Toplan\Sms\SmsManager' => \Toplan\Sms\SmsManager::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -817,6 +822,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\SupervisorRepository' => \Laravel\Horizon\Repositories\RedisSupervisorRepository::class,
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
+        'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
         'Toplan\Sms\SmsManager' => \Toplan\Sms\SmsManager::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -969,6 +975,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\SupervisorRepository' => \Laravel\Horizon\Repositories\RedisSupervisorRepository::class,
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
+        'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
         'Toplan\Sms\SmsManager' => \Toplan\Sms\SmsManager::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,

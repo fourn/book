@@ -63,6 +63,10 @@ class User extends Authenticatable
         return $this->hasMany(Transfer::class);
     }
 
+    public function searches(){
+        return $this->hasMany(Search::class);
+    }
+
     public function isAuthOf($model){
         return $model->user_id == $this->id;
     }
