@@ -52,6 +52,8 @@
     <form action="{{ route('order.create', $book) }}" >
         <input type="submit" value="立即购买" class="sub01" />
     </form>
+        @else
+        <a href="{{ route('passport.login') }}" class="sub01">请先登录</a>
     @endcan
 </footer>
 @endsection

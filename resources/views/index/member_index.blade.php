@@ -5,7 +5,11 @@
     <section>
         <i style="background-image: url({{ $user->avatar }})" onclick="location.href='{{ route('user.index') }}'"></i>
         <p class="p1">{{ $user->name }}</p>
-        <p class="p2">学校：{{ $user->school->name }}</p>
+        @if($user->school_id)
+            <p class="p2">学校：{{ $user->school->name }}</p>
+        @else
+            <p class="p2" onclick="location.href='{{ route('user.index') }}'"> 请设置学校 </p>
+        @endif
         <p class="p3">已购买 {{ $userOrderCount }} &nbsp;&nbsp; 已卖出 {{ $sellerOrderCount }}</p>
         <a class="a1" href="{{ route('passport.logout') }}">退出登录</a>
     </section>

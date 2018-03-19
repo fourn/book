@@ -27,6 +27,7 @@
         <div class="box03">
             <span class="tit">学校</span>
             <select class="box02" id="school">
+                <option value="">请设置学校</option>
                 @foreach ($schools as $school)
                 <option @if($school->id == $user->school_id) selected @endif value="{{ $school->id }}">{{ $school->name }}</option>
                 @endforeach
@@ -50,6 +51,7 @@
                 },
                 success:function (data){
                     //console.log(data);
+                    layer.msg('设置成功');
                 }
             })
         });
@@ -64,6 +66,7 @@
                 },
                 success:function (data){
                     //console.log(data);
+                    layer.msg('设置成功');
                 }
             })
         });
