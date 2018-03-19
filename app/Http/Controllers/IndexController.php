@@ -81,5 +81,17 @@ class IndexController extends Controller
         return view('index.search', compact('books', 'searches', 'keywords'));
     }
 
-
+    //选择学校页面
+    public function setSchool($school_id){
+        session(['school_id'=>$school_id]);
+        if(Auth::check()){
+            $user = Auth::user();
+            if(!$user->school_id){
+                $user->school_id = $school_id;
+                $user->save();
+            }
+        }
+        return redirect()->intended(route('index'));
+    }
+    
 }
