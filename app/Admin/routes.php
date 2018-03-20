@@ -16,4 +16,5 @@ Route::group([
     $router->resource('categories', 'CategoriesController');
     $router->resource('schools', 'SchoolsController');
     $router->resource('orders', 'OrdersController');
+    $router->resource('transfers', 'TransfersController');
 });
