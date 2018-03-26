@@ -16,5 +16,6 @@ Route::group([
     $router->resource('categories', 'CategoriesController');
     $router->resource('schools', 'SchoolsController');
     $router->resource('orders', 'OrdersController');
+    $router->get('transfer/{transfer}/confirm', 'TransfersController@confirm')->name('transfer_confirm');
     $router->resource('transfers', 'TransfersController');
 });
