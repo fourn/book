@@ -11,7 +11,7 @@
     </header>
     <div class="comheadbg"></div>
     @include('public._message')
-    <a href="javascript:void(0);" class="block w100"><img src="{{ $banner->image }}" class="w100 block" /></a>
+    <a href="{{ $banner->link }}" class="block w100"><img src="{{ $banner->image }}" class="w100 block" /></a>
     <section class="indexmenu">
         <a href="{{ route('books.list') }}?category=1&index=1" style="background-image: url(images/ico/index01.png)">课本教材</a>
         <a href="{{ route('books.list') }}?category=2&index=2" style="background-image: url(images/ico/index02.png)">课外读物</a>
@@ -77,7 +77,7 @@
         </section>
         <a href="#" class="more"><span>查看更多</span></a>
     </div>--}}
-    <a href="javascript:void(0);" class="block w100"><img src="images/photo/ad02.png" class="w100 block" /></a>
+    <a href="{{ $middle->link }}" class="block w100"><img src="{{ $middle->image }}" class="w100 block" /></a>
     <h2 class="indextit01" style="top: 0.2rem;"><span>最新发布</span></h2>
     <div class="w100 whitebg oh" id="box">
         {{--书本容器--}}

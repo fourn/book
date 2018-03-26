@@ -29,8 +29,8 @@ class IndexController extends Controller
             ->where('is_recommend', 1)
             ->get();
         $banner = Article::alias('banner')->first();
-
-        return view('index.index', compact('sessionSchool', 'books', 'banner'));
+        $middle = Article::alias('middle')->first();
+        return view('index.index', compact('sessionSchool', 'books', 'banner', 'middle'));
     }
 
     //会员中心首页
