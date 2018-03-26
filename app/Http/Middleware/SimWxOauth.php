@@ -20,7 +20,7 @@ class SimWxOauth
 
         if(env('APP_ENV') == 'local'){
             $user = new SocialiteUser([
-                'id' => 'OPENID',
+                'id' => uniqid(),
                 'name' => 'NICKNAME',
                 'nickname' => 'NICKNAME',
                 'avatar' => "http://thirdwx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",

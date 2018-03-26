@@ -46,18 +46,34 @@ class PassportController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput(['mobile']);
         }
-        $oauth_info = session('wechat.oauth_user.default');
-        $user = User::create([
+        $userData = [
             'name'=>'手机用户'.substr($request->mobile, -4),
             'mobile'=>$request->mobile,
             'password'=>bcrypt($request->password),
             'last_actived_at'=>date('Y-m-d H:i:s', time()),
-        ]);
+        ];
+        $oauth_user = session('wechat.oauth_user.default');
+        if($oauth_user){
+            $userData['openid'] = $oauth_user->getId();
+            $userData['name'] = $oauth_user->getName();
+            $userData['avatar'] = $oauth_user->getAvatar();
+        }
+        $user = User::create($userData);
         Auth::login($user);
         return redirect()->route('index');
     }
 
-    public function showLoginForm(){
+    public function showLoginForm(User $user){
+        //如果获取到微信授权，并且已经在系统中记录过，则直接取得系统授权
+        if(session()->has('wechat.oauth_user.default')){
+            $oauth_user = session('wechat.oauth_user.default');
+            $user = $user->where('openid', $oauth_user->getId())->first();
+            if($user){
+                Auth::login($user, true);
+                session()->flash('success', '微信授权登录成功');
+                return redirect()->intended(route('index'));
+            }
+        }
         return view('passport.login_form');
     }
 
