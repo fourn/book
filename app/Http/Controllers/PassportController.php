@@ -21,6 +21,11 @@ class PassportController extends Controller
         $this->middleware('guest', ['only'=>[
             'showRegisterForm', 'showLoginForm'
         ]]);
+
+        //微信中间件
+        $this->middleware('wechat.oauth:snsapi_userinfo', ['only'=>[
+            'showRegisterForm', 'showLoginForm'
+        ]]);
     }
 
     public function showRegisterForm()
@@ -41,6 +46,7 @@ class PassportController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput(['mobile']);
         }
+        $oauth_info = session('wechat.oauth_user.default');
         $user = User::create([
             'name'=>'手机用户'.substr($request->mobile, -4),
             'mobile'=>$request->mobile,

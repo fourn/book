@@ -53,10 +53,8 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * auth 中间件检查登录状态异常处理方法
-     * @param \Illuminate\Http\Request $request
-     * @param AuthenticationException $exception
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * 重写 auth 中间件检查登录状态异常处理方法
+     * 自定义拒绝后的跳转地址
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
