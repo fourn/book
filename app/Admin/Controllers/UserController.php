@@ -75,6 +75,7 @@ class UserController extends Controller
         return Admin::grid(User::class, function (Grid $grid) {
             //不可创建
             $grid->disableCreateButton();
+            $grid->model()->orderBy('created_at', 'desc');
             $grid->id('ID')->sortable();
             $grid->column('avatar', '头像')->image(null, 100, 100);
             $grid->column('name', '昵称');

@@ -18,6 +18,6 @@
  *
  */
 
-Encore\Admin\Form::forget(['map', 'editor']);
+Encore\Admin\Form::forget(['map']);
 
 Admin::js('/vendor/chart/chart.min.js');

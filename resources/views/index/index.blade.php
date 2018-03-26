@@ -11,7 +11,7 @@
     </header>
     <div class="comheadbg"></div>
     @include('public._message')
-    <a href="javascript:void(0);" class="block w100"><img src="images/photo/ad01.png" class="w100 block" /></a>
+    <a href="javascript:void(0);" class="block w100"><img src="{{ $banner->image }}" class="w100 block" /></a>
     <section class="indexmenu">
         <a href="{{ route('books.list') }}?category=1&index=1" style="background-image: url(images/ico/index01.png)">课本教材</a>
         <a href="{{ route('books.list') }}?category=2&index=2" style="background-image: url(images/ico/index02.png)">课外读物</a>

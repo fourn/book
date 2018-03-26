@@ -96,7 +96,7 @@ class OrdersController extends Controller
             });
             $grid->out_sn('外部单号');
             $grid->status('订单状态')->select($statuses);
-            $grid->created_at('创建时间');
+            $grid->created_at('创建时间')->sortable();
             $grid->payed_at('支付时间');
             $grid->updated_at('最近操作时间');
 

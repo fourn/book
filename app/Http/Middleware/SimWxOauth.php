@@ -18,7 +18,7 @@ class SimWxOauth
     public function handle($request, Closure $next)
     {
 
-        if(env('APP_ENV') == 'local'){
+        if(config('sim_wechat_oauth') == 'on'){
             $user = new SocialiteUser([
                 'id' => uniqid(),
                 'name' => 'NICKNAME',

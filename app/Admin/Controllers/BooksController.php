@@ -6,12 +6,14 @@ use App\Models\Book;
 
 use App\Models\Category;
 use App\Models\School;
+use App\Models\User;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Storage;
 
 class BooksController extends Controller
 {
@@ -75,9 +77,10 @@ class BooksController extends Controller
     {
         return Admin::grid(Book::class, function (Grid $grid) {
             //不可创建
-            $grid->disableCreateButton();
+//            $grid->disableCreateButton();
             //不可导出
             $grid->disableExport();
+            $grid->model()->orderBy('created_at', 'desc');
 
             $grid->id('ID')->sortable();
             $grid->column('sn', 'ISBN');
@@ -126,13 +129,13 @@ class BooksController extends Controller
         return Admin::form(Book::class, function (Form $form) {
             $form->hidden('admin_id')->value( Admin::user()->id);
             $form->display('id', 'ID');
-            $form->display('user.name', '所属会员');
+            $form->select('user_id', '所属会员')->options(User::all()->pluck('mobile', 'id')->toArray());
             $form->select('school_id', '所属学校')->options(School::all()->pluck('name', 'id')->toArray());
             $form->select('category_id', '所属分类')->options( Category::all()->pluck('name', 'id')->toArray());
 
             $form->text('sn', 'ISBN');
             $form->text('name', '书名');
-            $form->image('image')->removable()->help('只能上传一张图片');
+            $form->image('image', '封面')->removable()->uniqueName()->move('images/books')->help('只能上传一张图片');
             $form->text('author', '作者');
             $form->text('press', '出版社');
             $form->year('published_at', '出版时间');
@@ -147,6 +150,12 @@ class BooksController extends Controller
 
             $form->textarea('admin_note', '管理员备注')->placeholder('可用于反馈驳回原因');
 
+
+            $form->saved(function (Form $form) {
+                $model = $form->model();
+                $model->image = Storage::disk(config('admin.upload.disk'))->url($model->image);
+                $model->save();
+            });
         });
     }
 }

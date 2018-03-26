@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Book;
 use App\Models\Order;
 use App\Models\School;
@@ -27,7 +28,9 @@ class IndexController extends Controller
             ->forUser()
             ->where('is_recommend', 1)
             ->get();
-        return view('index.index', compact('sessionSchool', 'books'));
+        $banner = Article::alias('banner')->first();
+
+        return view('index.index', compact('sessionSchool', 'books', 'banner'));
     }
 
     //会员中心首页
