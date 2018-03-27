@@ -2,11 +2,9 @@
 @section('content')
 <header class="comhead">
     <a href="{{ route('index') }}" class="back"></a>
-    @if($keywords)
-    <a href="{{ url()->current() }}" class="a1">取消</a>
-    @endif
+    <a onclick="$('#search_form').submit()" class="a1">确定</a>
     <div class="box01 box02">
-        <form action="{{ url()->current() }}">
+        <form action="{{ url()->current() }}" id="search_form">
             <input type="submit" value=" " class="sub" />
             <input type="search" name="keywords" value="{{ $keywords }}" class="text" placeholder="输入关键词" />
         </form>
@@ -32,12 +30,15 @@
                 </a>
             @endforeach
         </div>
-        <p class="search_end"><span>已查显示全部搜索结果</span></p>
+        <p class="search_end"><span>已展示所有结果</span></p>
+        @if(!Request::has('is_all'))
+        <p class="" style="text-align: center; font-size: 0.24rem;">您可以：<a href="{{ Request::fullUrl() }}&is_all=1" style="font-size: 0.24rem; color: #0d6aad;">查看所有学校结果</a></p>
+        @endif
     @else
         <p class="search_end"><span>暂无结果</span></p>
     @endif
 
-    @else
+@else
 
 
         <h2 class="search_story">搜索历史</h2>
