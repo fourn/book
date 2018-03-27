@@ -7,7 +7,7 @@
 </header>
 <div class="comheadbg"></div>
 <div class="clear h05"></div>
-<form action="{{ route('user.avatar') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" >
+<form id="head" action="{{ route('user.avatar') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" >
     {{csrf_field()}}
 <div id="clipArea" style="height: 400px;"></div>
 <div class="edittext">
@@ -37,7 +37,7 @@
                 //console.log(dataUrl);
                 $('#file').val('');
                 $('#base').val(dataUrl);
-                $('form').submit();
+                $('#head').submit();
             }
         });
         file.addEventListener('change', function() {

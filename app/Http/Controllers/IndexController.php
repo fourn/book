@@ -70,7 +70,7 @@ class IndexController extends Controller
         if($request->has('keywords')){
 
             $books = Book::search($request->keywords)
-                ->where('school_id', session('school_id', 0))
+                //->where('school_id', session('school_id', 0))
                 ->where('is_show', 1)
                 ->where('status', 2)
                 ->get();
