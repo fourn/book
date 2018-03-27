@@ -65,7 +65,7 @@
     <a href="{{ route('account.index') }}" class="memberbtn">
         <p><i style="background-image: url(images/ico/member07.png)"></i>资金账户</p>
     </a>
-    <a href="#" class="memberbtn">
+    <a href="{{ $about->link }}" class="memberbtn">
         <p><i style="background-image: url(images/ico/member08.png)"></i>平台介绍</p>
     </a>
     <a href="{{ route('user.index') }}" class="memberbtn">

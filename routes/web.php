@@ -72,3 +72,6 @@ Route::resource('transfers', 'TransfersController', ['only' => ['create', 'store
 //资金
 Route::get('account', 'AccountsController@index')->name('account.index');
 Route::get('account/logs', 'AccountsController@logs')->name('account.logs');
+
+//文章
+Route::get('article/{article}/show', 'ArticlesController@show')->name('article.show');

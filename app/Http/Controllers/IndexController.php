@@ -20,14 +20,13 @@ class IndexController extends Controller
     }
 
     //首页
-    public function index(){
+    public function index(Book $book){
         if(session()->has('school_id')){
             $sessionSchool = School::find(session('school_id'));
         }
-        $books = Book::ofSchool()
-            ->forUser()
-            ->where('is_recommend', 1)
-            ->get();
+        $books = $book->recommend();
+
+
         $banner = Article::alias('banner')->first();
         $middle = Article::alias('middle')->first();
         return view('index.index', compact('sessionSchool', 'books', 'banner', 'middle'));
@@ -52,7 +51,16 @@ class IndexController extends Controller
         $hasSell = $order->where('seller_id', $user->id)->count();
 
 
-        return view('index.member_index', compact('user', 'statuses', 'userOrderCount', 'sellerOrderCount', 'orderStatusCount', 'hasSell'));
+        $about = Article::alias('about')->first();
+
+        return view('index.member_index', compact('user',
+            'statuses',
+            'userOrderCount',
+            'sellerOrderCount',
+            'orderStatusCount',
+            'hasSell',
+            'about'
+        ));
     }
 
     public function search(Request $request){

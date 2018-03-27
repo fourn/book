@@ -2,7 +2,7 @@
 @section('body', '')
 @section('content')
 <header class="comhead">
-    <h2>出售详情</h2>
+    <h2>书本详情</h2>
     <a href="javascript:history.back()" class="back"></a>
 </header>
 <div class="comheadbg"></div>

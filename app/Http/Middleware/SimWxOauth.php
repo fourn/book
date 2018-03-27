@@ -18,19 +18,19 @@ class SimWxOauth
     public function handle($request, Closure $next)
     {
 
-        if(config('sim_wechat_oauth') == 'on'){
-            $user = new SocialiteUser([
-                'id' => uniqid(),
-                'name' => 'NICKNAME',
-                'nickname' => 'NICKNAME',
-                'avatar' => "http://thirdwx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
-                'email' => null,
-                'original' => [],
-                'provider' => 'WeChat',
-            ]);
 
-            session(['wechat.oauth_user.default' => $user]);
-        }
+        $user = new SocialiteUser([
+            'id' => uniqid(),
+            'name' => 'NICKNAME',
+            'nickname' => 'NICKNAME',
+            'avatar' => "http://thirdwx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+            'email' => null,
+            'original' => [],
+            'provider' => 'WeChat',
+        ]);
+
+        session(['wechat.oauth_user.default' => $user]);
+
 
         return $next($request);
     }

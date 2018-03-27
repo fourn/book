@@ -22,6 +22,13 @@ class PassportController extends Controller
             'showRegisterForm', 'showLoginForm'
         ]]);
 
+        //模拟微信登陆，测试状态下通过中间件
+        if(config('sim_wechat_oauth') == 'on'){
+            $this->middleware('wechat.sim', ['only'=>[
+                'showRegisterForm', 'showLoginForm'
+            ]]);
+        }
+
         //微信中间件
         $this->middleware('wechat.oauth:snsapi_userinfo', ['only'=>[
             'showRegisterForm', 'showLoginForm'

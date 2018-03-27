@@ -153,8 +153,10 @@ class BooksController extends Controller
 
             $form->saved(function (Form $form) {
                 $model = $form->model();
-                $model->image = Storage::disk(config('admin.upload.disk'))->url($model->image);
-                $model->save();
+                if($model->wasChanged('image')){
+                    $model->image = Storage::disk(config('admin.upload.disk'))->url($model->image);
+                    $model->save();
+                }
             });
         });
     }

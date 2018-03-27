@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use Laravel\Scout\Searchable;
+
 class Book extends Model
 {
     use Searchable;
@@ -24,11 +25,6 @@ class Book extends Model
         return $this->hasMany(Order::class);
     }
 
-    /**
-     * cover used attribute for human read
-     * @param $value
-     * @return mixed
-     */
     public function getUsedFormatAttribute(){
         $used_arr = config('custom.book.used');
         return $used_arr[$this->used];
@@ -53,8 +49,18 @@ class Book extends Model
         return $statuses[$this->status];
     }
 
+    //支付成功
     public function payed(){
         $this->status = 4;
         $this->save();
+    }
+
+
+    //推荐
+    public function recommend(){
+        return $this->ofSchool()
+            ->forUser()
+            ->where('is_recommend', 1)
+            ->get();
     }
 }
