@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use Traits\LastActivedAtHelper;
+
     use Notifiable {
         notify as protected laravelNotify;
     }
