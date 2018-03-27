@@ -34,7 +34,7 @@
         <p><span>书名：</span><input type="text" name="name" class="text" placeholder="请输入书名" value="{{ old('name', $book->name) }}" /></p>
         <p><span>作者：</span><input type="text" name="author" class="text" placeholder="请输入作者" value="{{ old('author', $book->author) }}"/></p>
         <p><span>出版社：</span><input type="text" name="press" class="text text01" placeholder="请输入出版社" value="{{ old('press', $book->press) }}" /></p>
-        <p><span>出版年份：</span><input type="text" name="published_at" class="text text02" placeholder="例如：2005" value="{{ old('published_at', $book->published_at) }}"/></p>
+        <p><span>出版年份：</span><input type="text" style="width: 2.4rem;" name="published_at" class="text text02" placeholder="例如：2005" value="{{ old('published_at', $book->published_at) }}"/></p>
     </div>
 </section>
 <div class="clear h02"></div>
