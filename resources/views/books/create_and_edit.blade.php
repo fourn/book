@@ -67,7 +67,9 @@
     <textarea name="description" class="textarea" placeholder="请输入书本描述">{{ old('description', $book->description) }}</textarea>
 </section>
 <div class="clear h02"></div>
+@if($book->id)
 <div style="margin-left: 0.3rem; font-size: 0.24rem;color: #999;">内容修改之后需要等待重新审核</div>
+@endif
 <input type="submit" value="@if($book->id)保存修改@else发布书本@endif" class="bluebtn" />
 <div class="clear h02"></div>
 </form>

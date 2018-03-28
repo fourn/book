@@ -6,7 +6,7 @@
     <a href="{{ route('user.index') }}" class="back"></a>
 </header>
 <div class="comheadbg"></div>
-<div class="clear h05"></div>
+
 <form id="head" action="{{ route('user.avatar') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" >
     {{csrf_field()}}
 <div id="clipArea" style="height: 400px;"></div>
@@ -16,7 +16,7 @@
     {{--<input type="file" value="" class="text" placeholder="请输入" />--}}
 </div>
 
-<input type="button" id="clipBtn" class="editbtn" value="确认修改" />
+<input type="button" id="clipBtn" class="editbtn" style="margin-top: 0.2rem;" value="确认修改" />
 </form>
 @endsection
 
