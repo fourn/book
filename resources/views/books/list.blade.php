@@ -3,8 +3,11 @@
 @section('content')
 @include('layouts._set_school')
 <header class="comhead">
-    <h2>选择分类</h2>
     <a href="{{ route('index') }}" class="back"></a>
+    <div class="box01" style="width: 5.5rem;" onclick="location.href='{{ route('search') }}?focus=1'">
+        <input type="submit" value=" " class="sub"  />
+        <input type="search" value="" class="text" placeholder="输入关键词" readonly />
+    </div>
 </header>
 <div class="comheadbg"></div>
 

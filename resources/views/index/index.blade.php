@@ -4,9 +4,9 @@
     @include('layouts._set_school')
     <header class="comhead">
         <p class="btn01" onclick="$('#set_school').show()">{{ isset($sessionSchool) ? $sessionSchool->name : '请选择'}}</p>
-        <div class="box01" onclick="location.href='{{ route('search') }}'">
+        <div class="box01" onclick="location.href='{{ route('search') }}?focus=1'">
             <input type="submit" value=" " class="sub" />
-            <input type="search" value="" class="text" placeholder="输入关键词" />
+            <input type="search" value="" class="text" placeholder="输入关键词" readonly />
         </div>
     </header>
     <div class="comheadbg"></div>

@@ -87,7 +87,7 @@
                 type:2,
                 anim:2,
                 shadeClose: true,
-                area:['100%', '100%'],
+                area:['100%', '110%'],
                 offset: 'b', //右下角弹出
                 content:_url,
                 success: _success,
