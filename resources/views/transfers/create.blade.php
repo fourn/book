@@ -15,7 +15,7 @@
         <input type="text" class="text" value="{{ $user->alipay }}" name="alipay" placeholder="请输入" />
     </p>
     <p class="p2">提现金额</p>
-    <p class="p3"><input class="text" type="number" name="amount" placeholder="￥" value="{{ old('amount') }}"/></p>
+    <p class="p3"><input class="text" type="text" name="amount" placeholder="￥" value="{{ old('amount') }}"/></p>
     <p class="p4">可提现余额：{{ $user->balance }} 元 <a style="color: #00a7d0;" id="set_all">全部</a></p>
 </div>
 
@@ -32,6 +32,7 @@
 
             $('input[name="amount"]').keyup(function (){
                 if($(this).val() > _max){
+                    layer.msg('最多提现'+_max+'元');
                     $(this).val(_max)
                 }
             });

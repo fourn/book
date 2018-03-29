@@ -14,7 +14,7 @@ class Order extends Model
     const OPERATOR_ADMIN = 3;
     const OPERATOR_SYSTEM = 4;
 
-    protected $fillable = ['message'];
+    protected $fillable = ['message' , 'commission_user', 'commission_system'];
 
     public function user(){
         return $this->belongsTo(User::class);
