@@ -75,34 +75,50 @@
 </form>
 @include('layouts._footer')
 
-@endsection
+
 @section('script')
-<script src="{{ asset('layui/layui.js') }}"></script>
-<script type="text/javascript">
-    winCloseMyWin(".winbgclick");//关闭窗口
-    layui.use('upload', function (){
-        var upload = layui.upload;
-        var uploadInst = upload.render({
-            elem: '#upload_image' //绑定元素
-            ,url: '{{ route('books.upload_image') }}' //上传接口
-            ,data: {_token: '{{ csrf_token() }}'}
-            ,field:'upload_file'
-            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
-                layer.load(); //上传loading
-            }
-            ,done: function(res){
-                //上传完毕回调
-                layer.closeAll('loading'); //关闭loading
-                if(res.code == 1){
-                    $('#image').val(res.file_path);
-                    $('#image_show').attr('src', res.file_path);
+    <script type="text/javascript">
+        winCloseMyWin(".winbgclick");//关闭窗口
+
+        function openPhotoClip(_url, _success, _cancel){
+            layer.open({
+                id:'photo_clip',
+                title: '截取图片',
+                type:2,
+                anim:2,
+                shadeClose: true,
+                area:['100%', '90%'],
+                offset: 'b', //右下角弹出
+                content:_url,
+                success: _success,
+                cancel: _cancel,
+            });
+        }
+
+        function book(base_image){
+            $.ajax({
+                url:'{{ route('books.upload_image') }}',
+                data:{'base_image':base_image},
+                type:'post',
+                success:function (data){
+                    if(data.code === 1){
+                        $('#image_show').attr('src', data.file_path);
+                        $('#image').val(data.file_path);
+                        layer.msg('上传成功');
+                    }else{
+                        layer.msg('上传失败');
+                    }
                 }
-            }
-            ,error: function(){
-                //请求异常回调
-                layer.closeAll('loading'); //关闭loading
-            }
-        });
-    })
-</script>
+            });
+        }
+
+        $(function (){
+            $('#upload_image').click(function (){
+                openPhotoClip('{{ route('photo_clip', ['size'=>'[640,880]' ,'fn'=>'book']) }}');
+            });
+        })
+
+
+
+    </script>
 @endsection

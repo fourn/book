@@ -78,9 +78,9 @@ class BooksController extends Controller
             'file_path'=>'',
         ];
         // 判断是否有上传文件，并赋值给 $file
-        if ($file = $request->upload_file) {
+        if ($request->has('base_image')) {
             // 保存图片到本地
-            $result = $uploader->save($request->upload_file, 'books', \Auth::id(), 332);
+            $result = $uploader->saveBase($request->base_image, 'books', \Auth::id());
             // 图片保存成功的话
             if ($result) {
                 $data['file_path'] = $result['path'];
@@ -123,6 +123,10 @@ class BooksController extends Controller
 		$book->save();
 		return redirect()->route('books.show_self', $book->id)->with('message', '编辑成功！请注意审核通知');
 	}
+
+	public function photo_clip(){
+        return view('books.photo_clip');
+    }
 
 	public function toggleShow(Request $request){
         $id = $request->id;

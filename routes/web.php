@@ -43,6 +43,8 @@ Route::post('upload_image', 'BooksController@uploadImage')->name('books.upload_i
 Route::get('books/show-self/{book}', 'BooksController@showSelf')->name('books.show_self');//注意此处是一个隐式绑定
 Route::get('books/toggle_show', 'BooksController@toggleShow')->name('books.toggle_show');
 Route::resource('books', 'BooksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+//前端图片裁剪
+Route::get('photo_clip', 'BooksController@photo_clip')->name('photo_clip');
 
 //订单
 Route::prefix('order')->group(function (){
