@@ -35,6 +35,15 @@ class Book extends Model
         return $statuses[$this->status];
     }
 
+    public function getAuthorAttribute($val){
+        return $val ? $val : '佚名';
+    }
+
+    public function getPublishedAtAttribute($val)
+    {
+        return $val ? $val : '未知';
+    }
+
     public function scopeOfSchool($query){
         return $query->where('school_id', session('school_id', 0));
     }

@@ -18,9 +18,9 @@ class BookRequest extends Request
                     // CREATE ROLES
                     'sn'=>'required',
                     'name'=>'required',
-                    'author'=>'required',
+//                    'author'=>'required',
                     'press'=>'required',
-                    'published_at'=>'required|date_format:Y',
+                    'published_at'=>'nullable|date_format:Y',
                     'used'=>'integer|min:1',
                     'category_id'=>'integer|min:1',
                     'original_price'=>'required|numeric|min:0.01',
