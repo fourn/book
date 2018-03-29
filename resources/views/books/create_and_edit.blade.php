@@ -96,6 +96,7 @@
         }
 
         function book(base_image){
+            var _load = layer.load();
             $.ajax({
                 url:'{{ route('books.upload_image') }}',
                 data:{'base_image':base_image},
@@ -108,6 +109,7 @@
                     }else{
                         layer.msg('上传失败');
                     }
+                    layer.close(_load);
                 }
             });
         }
