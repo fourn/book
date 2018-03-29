@@ -86,9 +86,9 @@
                 title: '截取图片',
                 type:2,
                 anim:2,
-                shadeClose: true,
-                area:['100%', '110%'],
-                offset: 'b', //右下角弹出
+                // shadeClose: true,
+                area:['100%', '100%'],
+                offset: '0px',
                 content:_url,
                 success: _success,
                 cancel: _cancel,
