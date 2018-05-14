@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Language" content="zh-CN">
-    <title>@yield('title', '淘书屋')</title>
+    <title>@yield('title', '乐书淘')</title>
     {{--<meta name="keywords" content="">--}}
     {{--<meta name="description" content="">--}}
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
