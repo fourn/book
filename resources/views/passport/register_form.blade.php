@@ -34,7 +34,7 @@
     <div class="clear h08"></div>
     @isset($oauth_user)
         <div class="logintext">
-            <img src="{{$oauth_user->getAvatar()}}" alt="">
+            <img src="{{$oauth_user->getAvatar()}}" alt="" style="width: 1rem;">
             <div>{{$oauth_user->getName()}}</div>
         </div>
     @endisset
