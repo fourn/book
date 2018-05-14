@@ -55,7 +55,9 @@ class HomeController extends Controller
                         ->groupBy('school_id')
                         ->get();
                     foreach ($group as $k => $v){
-                        $labels[] = $schools[$v->school_id ?: 0];
+                        if($v->school_id){
+                            $labels[] = $schools[$v->school_id];
+                        }
                     }
                     $data = $group->pluck('count')->toArray();
                     $options = [
@@ -79,7 +81,9 @@ class HomeController extends Controller
                         ->groupBy('school_id')
                         ->get();
                     foreach ($group as $k => $v){
-                        $labels[] = $schools[$v->school_id ?: 0];
+                        if($v->school_id){
+                            $labels[] = $schools[$v->school_id];
+                        }
                     }
                     $data = $group->pluck('count')->toArray();
                     $options = [
@@ -103,7 +107,9 @@ class HomeController extends Controller
                         ->groupBy('school_id')
                         ->get();
                     foreach ($group as $k => $v){
-                        $labels[] = $schools[$v->school_id ?: 0];
+                        if($v->school_id){
+                            $labels[] = $schools[$v->school_id];
+                        }
                     }
                     $data = $group->pluck('count')->toArray();
                     $options = [
