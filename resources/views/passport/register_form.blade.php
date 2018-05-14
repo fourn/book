@@ -9,7 +9,7 @@
     <div class="comheadbg"></div>
 
     @include('public._errors')
-
+    @include('public._message')
     <form action="{{ route('passport.register') }}" method="post">
     {{ csrf_field() }}
     <section class="loginbox">
@@ -32,6 +32,12 @@
     </section>
 
     <div class="clear h08"></div>
+    @isset($oauth_user)
+        <div class="logintext">
+            <img src="{{$oauth_user->getAvatar()}}" alt="">
+            <div>{{$oauth_user->getName()}}</div>
+        </div>
+    @endisset
     <input type="submit" value="注册" class="loginbtn" />
     <p class="logintext"><a href="{{ route('passport.login') }}">已有账号？</a></p>
     </form>

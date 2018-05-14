@@ -37,8 +37,11 @@ class PassportController extends Controller
 
     public function showRegisterForm()
     {
-
-        return view('passport.register_form');
+        $oauth_user = [];
+        if(session()->has('wechat.oauth_user.default')) {
+            $oauth_user = session('wechat.oauth_user.default');
+        }
+        return view('passport.register_form', compact('oauth_user'));
     }
 
     /**
@@ -79,6 +82,10 @@ class PassportController extends Controller
                 Auth::login($user, true);
                 session()->flash('success', '微信授权登录成功');
                 return redirect()->intended(route('index'));
+            }else{
+                //获取到授权，但是并不存在于系统中
+                session()->flash('success', '微信授权成功，请继续完成注册');
+                return redirect()->route('passport.register');
             }
         }
         return view('passport.login_form');
