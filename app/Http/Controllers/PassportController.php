@@ -70,6 +70,7 @@ class PassportController extends Controller
         }
         $user = User::create($userData);
         Auth::login($user);
+        session()->flash('success', '注册成功并已自动登录~');
         return redirect()->route('index');
     }
 
