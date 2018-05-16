@@ -95,12 +95,12 @@ class OrdersController extends Controller
         $this->authorize('pay', $order);
         $payment = EasyWeChat::payment();
         $orderData = [
-            'body' => '腾讯充值中心-QQ会员充值',
-            'out_trade_no' => '20150806125346',
-            'total_fee' => 88,
-            'notify_url' => 'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址
+            'body' => $order->name,
+            'out_trade_no' => $order->sn,
+            'total_fee' => $order->price * 100,
+            'notify_url' => route('order.notify'), // 支付结果通知网址
             'trade_type' => 'JSAPI',
-            'openid' => 'oUpF8uMuAJO_M2pxb1Q9zNjWeS6o',
+            'openid' => $order->user()->openid,
         ];
         dd($orderData);
         $result = $payment->order->unify($orderData);
