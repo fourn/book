@@ -112,8 +112,9 @@ class OrdersController extends Controller
     }
 
     public function notify(){
-        Log::alert('notify', ['aaa'=>'bbb']);
+        Log::alert('notify', ['step'=>'1']);
         $payment = EasyWeChat::payment();
+        Log::alert('notify', ['step'=>'2']);
         $response = $payment->handlePaidNotify(function ($message, $fail) {
             Log::alert('message', $message);
             if ($message['return_code'] === 'SUCCESS') { // 与微信通信成功
