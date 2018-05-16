@@ -103,10 +103,9 @@ class OrdersController extends Controller
             'openid' => $order->user->openid,
         ];
         $result = $payment->order->unify($orderData);
-        dd($result);
         $jssdk = $payment->jssdk;
-        $json = $jssdk->bridgeConfig($result['prepayId']);
-        return view('orders.pay', compact('order'));
+        $json = $jssdk->bridgeConfig($result['prepay_id']);
+        return view('orders.pay', compact('order', 'json'));
     }
 
     public function notify(){
