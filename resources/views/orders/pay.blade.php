@@ -18,6 +18,7 @@
     <input type="submit" value="模拟付款" class="paysub" />
 </form>
 @endif
+<input  onclick="callpay()" value="支付" class="paysub" />
 {{--<aside class="winbg" style="display: block;">
     <div class="winbgclick"></div>
     <div class="win_success">
@@ -41,17 +42,32 @@
 @section('javascript')
 <script type="text/javascript">
     //winCloseMyWin(".winbgclick");//关闭窗口
-    WeixinJSBridge.invoke(
-        'getBrandWCPayRequest', {{ $json }},
-        function(res){
-            if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-                // 使用以上方式判断前端返回,微信团队郑重提示：
-                // res.err_msg将在用户支付成功后返回
-                // ok，但并不保证它绝对可靠。
-                location.href="{{ route($order->userLink()) }}";
+    function jsApiCall(){
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest', {{ $json }},
+            function(res){
+                if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                    // 使用以上方式判断前端返回,微信团队郑重提示：
+                    // res.err_msg将在用户支付成功后返回
+                    // ok，但并不保证它绝对可靠。
+                    location.href="{{ route($order->userLink()) }}";
+                }
             }
+        );
+    }
+    function callpay()
+    {
+        if (typeof WeixinJSBridge == "undefined"){
+            if( document.addEventListener ){
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            }else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        }else{
+            jsApiCall();
         }
-    );
+    }
 </script>
 @endsection
 
