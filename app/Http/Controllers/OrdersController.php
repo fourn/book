@@ -112,7 +112,7 @@ class OrdersController extends Controller
     }
 
     public function notify(){
-        Log::alert('notify');
+        Log::alert('notify', ['aaa'=>'bbb']);
         $payment = EasyWeChat::payment();
         $response = $payment->handlePaidNotify(function ($message, $fail) {
             Log::alert('message', $message);
