@@ -100,7 +100,7 @@ class OrdersController extends Controller
             'total_fee' => $order->price * 100,
             'notify_url' => route('order.notify'), // 支付结果通知网址
             'trade_type' => 'JSAPI',
-            'openid' => $order->user()->openid,
+            'openid' => $order->user->openid,
         ];
         dd($orderData);
         $result = $payment->order->unify($orderData);
