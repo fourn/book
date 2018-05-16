@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use EasyWeChat;
+use Illuminate\Support\Facades\Log;
 
 class OrdersController extends Controller
 {
@@ -111,12 +112,13 @@ class OrdersController extends Controller
     public function notify(){
         $payment = EasyWeChat::payment();
         $response = $payment->handlePaidNotify(function ($message, $fail) {
+            Log::alert('message', $message);
             if ($message['return_code'] === 'SUCCESS') { // 与微信通信成功
                 if (array_get($message, 'result_code') === 'SUCCESS') {
                     $order = Order::where('sn' ,$message['out_trade_no'])->firstOrFail();
                     $this->authorize('pay', $order);
                     $order->payed($message['transaction_id'],
-                        Carbon::createFromFormat('yyyyMMddHHmmss', $message['time_end'])->toDateTimeString(),
+                        Carbon::now()->toDateTimeString(),
                         $message['total_fee']/100);
                 } elseif (array_get($message, 'result_code') === 'FAIL') {
                     // 用户支付失败
