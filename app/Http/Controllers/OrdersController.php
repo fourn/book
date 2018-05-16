@@ -97,14 +97,37 @@ class OrdersController extends Controller
         $orderData = [
             'body' => $order->name,
             'out_trade_no' => $order->sn,
-            'total_fee' => $order->price * 100,
+            'total_fee' => (int)($order->price * 100),
             'notify_url' => route('order.notify'), // 支付结果通知网址
             'trade_type' => 'JSAPI',
             'openid' => $order->user->openid,
         ];
-        dd($orderData);
         $result = $payment->order->unify($orderData);
+        dd($result);
+        $jssdk = $payment->jssdk;
+        $json = $jssdk->bridgeConfig($result['prepayId']);
         return view('orders.pay', compact('order'));
+    }
+
+    public function notify(){
+        $payment = EasyWeChat::payment();
+        $response = $payment->handlePaidNotify(function ($message, $fail) {
+            if ($message['return_code'] === 'SUCCESS') { // 与微信通信成功
+                if (array_get($message, 'result_code') === 'SUCCESS') {
+                    $order = Order::where('sn' ,$message['out_trade_no'])->firstOrFail();
+                    $this->authorize('pay', $order);
+                    $order->payed($message['transaction_id'],
+                        Carbon::createFromFormat('yyyyMMddHHmmss', $message['time_end'])->toDateTimeString(),
+                        $message['total_fee']/100);
+                } elseif (array_get($message, 'result_code') === 'FAIL') {
+                    // 用户支付失败
+                }
+                return true;
+            } else {
+                return $fail('通信失败，请稍后再通知我');
+            }
+        });
+        return $response;
     }
 
     //模拟支付

@@ -58,7 +58,7 @@ Route::prefix('order')->group(function (){
     Route::get('seller/show/{order}', 'OrdersController@sellerShow')->name('order.seller_show');
     //操作
     Route::get('pay/{order}' ,'OrdersController@pay')->name('order.pay');//发起支付
-    Route::any('notify')->name('order.notify');
+    Route::any('notify', 'OrdersController@notify')->name('order.notify');//支付回调
     Route::get('fake_pay', 'OrdersController@fakePay')->name('order.fake_pay');//模拟支付成功
     Route::get('confirm/{order}', 'OrdersController@confirm')->name('order.confirm');//卖家确认
     Route::get('send/{order}', 'OrdersController@send')->name('order.send');//卖家送达
