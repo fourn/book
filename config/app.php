@@ -192,6 +192,9 @@ return [
 
         //全文搜索
         Laravel\Scout\ScoutServiceProvider::class,
+
+        //微信支付
+        Overtrue\LaravelWeChat\ServiceProvider::class,
     ],
 
     /*
@@ -245,7 +248,8 @@ return [
         'PhpSms' => Toplan\PhpSms\Facades\Sms::class,
         'SmsManager' => Toplan\Sms\Facades\SmsManager::class,
 
-
+        //EasyWeChat
+        'EasyWeChat' => Overtrue\LaravelWeChat\Facade::class,
     ],
 
 ];

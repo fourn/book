@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use EasyWeChat;
 
 class OrdersController extends Controller
 {
@@ -92,6 +93,17 @@ class OrdersController extends Controller
 	//订单发起支付
 	public function pay(Order $order){
         $this->authorize('pay', $order);
+        $payment = EasyWeChat::payment();
+        $orderData = [
+            'body' => '腾讯充值中心-QQ会员充值',
+            'out_trade_no' => '20150806125346',
+            'total_fee' => 88,
+            'notify_url' => 'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址
+            'trade_type' => 'JSAPI',
+            'openid' => 'oUpF8uMuAJO_M2pxb1Q9zNjWeS6o',
+        ];
+        dd($orderData);
+        $result = $payment->order->unify($orderData);
         return view('orders.pay', compact('order'));
     }
 
