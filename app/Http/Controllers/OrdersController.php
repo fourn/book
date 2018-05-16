@@ -103,13 +103,16 @@ class OrdersController extends Controller
             'trade_type' => 'JSAPI',
             'openid' => $order->user->openid,
         ];
+        Log::alert('orderData', $orderData);
         $result = $payment->order->unify($orderData);
+        Log::alert('unifyOrder', $result);
         $jssdk = $payment->jssdk;
         $json = $jssdk->bridgeConfig($result['prepay_id']);
         return view('orders.pay', compact('order', 'json'));
     }
 
     public function notify(){
+        Log::alert('notify');
         $payment = EasyWeChat::payment();
         $response = $payment->handlePaidNotify(function ($message, $fail) {
             Log::alert('message', $message);
