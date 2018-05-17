@@ -121,8 +121,9 @@ class OrdersController extends Controller
                 Log::alert('notify', ['step'=>'2']);
                 if (array_get($message, 'result_code') === 'SUCCESS') {
                     Log::alert('notify', ['step'=>'3']);
+                    $sql = Order::where('sn', '=', $message['out_trade_no'])->firstOrFail()->toSql();
                     $order = Order::where('sn', '=', $message['out_trade_no'])->firstOrFail();
-                    Log::alert('order', $order);
+                    Log::alert('order', ['order'=>$order, 'sql'=>$sql]);
                     $order->payed($message['transaction_id'],
                         Carbon::now()->toDateTimeString(),
                         $message['total_fee']/100);
