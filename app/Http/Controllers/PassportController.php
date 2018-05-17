@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use SmsManager;
 use Validator;
-
+use App;
 
 class PassportController extends Controller
 {
@@ -76,7 +76,7 @@ class PassportController extends Controller
 
     public function showLoginForm(User $user){
         //如果获取到微信授权，并且已经在系统中记录过，则直接取得系统授权
-        if(session()->has('wechat.oauth_user.default')){
+        if(session()->has('wechat.oauth_user.default') && !App::environment('local')){
             $oauth_user = session('wechat.oauth_user.default');
             $user = $user->where('openid', $oauth_user->getId())->first();
             if($user){

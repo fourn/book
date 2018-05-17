@@ -33,7 +33,7 @@ Route::prefix('user')->group(function (){
     Route::get('name', 'UserController@name')->name('user.name');
     Route::post('name', 'UserController@updateName')->name('user.name');
     Route::post('gander', 'UserController@updateGender')->name('user.gender');
-    Route::post('school', 'USerController@updateSchool')->name('user.school');
+    Route::post('school', 'UserController@updateSchool')->name('user.school');
 });
 
 //书本
