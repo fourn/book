@@ -423,7 +423,7 @@ textarea.textarea {
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */
   border-radius: 3px;
@@ -563,7 +563,7 @@ textarea.textarea {
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */
   border-radius: 3px;
@@ -585,7 +585,7 @@ textarea.textarea {
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */
   border-radius: 3px;
@@ -1478,7 +1478,7 @@ textarea.textarea {
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */
   border-radius: 3px;
@@ -1910,7 +1910,7 @@ textarea.textarea {
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */
   border-radius: 3px;
@@ -2082,7 +2082,7 @@ textarea.textarea {
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */
   border-radius: 3px;
@@ -2122,7 +2122,7 @@ textarea.textarea {
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */
   border-radius: 3px;
@@ -2285,7 +2285,7 @@ textarea.textarea {
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */
   border-radius: 3px;
