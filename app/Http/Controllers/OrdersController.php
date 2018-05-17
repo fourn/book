@@ -114,16 +114,19 @@ class OrdersController extends Controller
     public function notify(){
         Log::alert('notify', ['step'=>'1']);
         $payment = EasyWeChat::payment();
-        Log::alert('notify', ['step'=>'2']);
+
         $response = $payment->handlePaidNotify(function ($message, $fail) {
             Log::alert('message', $message);
             if ($message['return_code'] === 'SUCCESS') { // 与微信通信成功
+                Log::alert('notify', ['step'=>'2']);
                 if (array_get($message, 'result_code') === 'SUCCESS') {
+                    Log::alert('notify', ['step'=>'3']);
                     $order = Order::where('sn' ,$message['out_trade_no'])->firstOrFail();
-                    $this->authorize('pay', $order);
+                    Log::alert('order', $order);
                     $order->payed($message['transaction_id'],
                         Carbon::now()->toDateTimeString(),
                         $message['total_fee']/100);
+                    Log::alert('notify', ['step'=>'4']);
                 } elseif (array_get($message, 'result_code') === 'FAIL') {
                     // 用户支付失败
                 }
