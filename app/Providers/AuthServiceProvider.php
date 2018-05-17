@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Admin;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,9 +28,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         \Horizon::auth(function ($request) {
-            // 是否后台超级管理员
-            return Admin::user()->isAdministrator();
+            $adminUser = \Admin::user();
+            if(isset($adminUser)){
+                return $adminUser->isAdministrator();
+            }else{
+                return false;
+            }
         });
-        //
     }
 }
