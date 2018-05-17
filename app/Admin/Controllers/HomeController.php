@@ -54,6 +54,7 @@ class HomeController extends Controller
                         ->selectRaw(DB::raw('count(*) as count, school_id'))
                         ->groupBy('school_id')
                         ->get();
+                    $labels = [];
                     foreach ($group as $k => $v){
                         if($v->school_id){
                             $labels[] = $schools[$v->school_id];
@@ -80,6 +81,7 @@ class HomeController extends Controller
                         ->selectRaw(DB::raw('count(*) as count, school_id'))
                         ->groupBy('school_id')
                         ->get();
+                    $labels = [];
                     foreach ($group as $k => $v){
                         if($v->school_id){
                             $labels[] = $schools[$v->school_id];
@@ -106,6 +108,7 @@ class HomeController extends Controller
                         ->selectRaw(DB::raw('count(*) as count, school_id'))
                         ->groupBy('school_id')
                         ->get();
+                    $labels = [];
                     foreach ($group as $k => $v){
                         if($v->school_id){
                             $labels[] = $schools[$v->school_id];
