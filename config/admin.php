@@ -5,17 +5,17 @@ return [
     /*
      * Laravel-admin name.
      */
-    'name' => '淘书屋-后台',
+    'name' => '乐书淘-后台',
 
     /*
      * Logo in admin panel header.
      */
-    'logo' => '<b>淘书屋</b> 后台',
+    'logo' => '<b>乐书淘</b> 后台',
 
     /*
      * Mini-logo in admin panel header.
      */
-    'logo-mini' => '<b>淘书屋</b>',
+    'logo-mini' => '<b>乐书淘</b>',
 
     /*
      * Route configuration.
