@@ -64,7 +64,7 @@
     <p class="p2">
         <span>图书描述：</span>
     </p>
-    <textarea name="description" class="textarea" placeholder="请输入书本描述">{{ old('description', $book->description) }}</textarea>
+    <textarea name="description" class="textarea" placeholder="请输入书本描述">{!! old('description', $book->description) !!}</textarea>
 </section>
 <div class="clear h02"></div>
 @if($book->id)

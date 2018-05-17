@@ -53,7 +53,9 @@
         <input type="submit" value="立即购买" class="sub01" />
     </form>
         @else
+        @guest
         <a href="{{ route('passport.login') }}" class="sub01">请先登录</a>
+        @endguest
     @endcan
 </footer>
 @endsection
