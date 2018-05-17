@@ -111,7 +111,7 @@ class OrdersController extends Controller
         return view('orders.pay', compact('order', 'json'));
     }
 
-    public function notify(){
+    public function notify(Order $order){
         Log::alert('notify', ['step'=>'1']);
         $payment = EasyWeChat::payment();
 
@@ -121,7 +121,7 @@ class OrdersController extends Controller
                 Log::alert('notify', ['step'=>'2']);
                 if (array_get($message, 'result_code') === 'SUCCESS') {
                     Log::alert('notify', ['step'=>'3']);
-                    $order = Order::where('sn' ,$message['out_trade_no'])->firstOrFail();
+                    $order = Order::where('sn', '=', $message['out_trade_no'])->firstOrFail();
                     Log::alert('order', $order);
                     $order->payed($message['transaction_id'],
                         Carbon::now()->toDateTimeString(),
