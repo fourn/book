@@ -9,7 +9,7 @@
 
 <div id="box" class="bannerbox">
     <ul id="sum" class="bannersum" style="width: 100%;">
-        <li style="width: 10%;"><img src="{{ $book->image }}" /></li>
+        <li style="width: 100%;"><img src="{{ $book->image }}" /></li>
     </ul>
     <p id="num" class="bannernum"></p>
 </div><!--我是banner-->
