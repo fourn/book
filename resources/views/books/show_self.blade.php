@@ -31,7 +31,7 @@
     <p class="p2">
         <span>书本描述：</span>
     </p>
-    <div style="padding-right: 0.3rem;padding-bottom:0.5rem; height: auto;">{!! $book->description !!}</div>
+    <div style="padding-right: 0.3rem;padding-bottom:0.5rem; height: auto;">{{ $book->description }}</div>
 </section>
 <div class="clear h10"></div>
 <div class="bookbtn">

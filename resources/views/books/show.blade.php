@@ -31,7 +31,7 @@
         <span class="sp1" style="position: static;margin-right: 1.5rem;">{{ $book->published_at }}年出版</span>
         <span class="sp2">{{ $book->used_format }}</span>{{--<span class="sp3">34本</span>--}}
     </p>
-    <p class="p4">{!! $book->description !!}</p>
+    <p class="p4">{{ $book->description }}</p>
 </div>
 
 <div class="clear h02"></div>

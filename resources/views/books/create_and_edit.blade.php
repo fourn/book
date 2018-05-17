@@ -62,7 +62,7 @@
         <span>出售价：</span><input type="text" name="price" class="text" value="{{ old('price', $book->price) }}" />
     </p>
     <p class="p2">
-        <span>图书描述：</span>
+        <span>书本描述：</span>
     </p>
     <textarea name="description" class="textarea" placeholder="请输入书本描述">{{ old('description', $book->description) }}</textarea>
 </section>
