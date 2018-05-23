@@ -111,7 +111,7 @@ class ArticlesController extends Controller
             $form->text('name', '名称');
             $form->text('title', '标题');
             $form->image('image', '图片')->removable()->uniqueName()->move('images/articles')->help('只能上传一张图片');
-            $form->editor('content', '内容')->help('如果需要在文章中使用图片，请先将图片上传到媒体管理中');
+            $form->editor('article_content', '内容')->help('如果需要在文章中使用图片，请先将图片上传到媒体管理中');
             $form->text('link', '链接')->default(0)->help('默认跳转到文章详情页，0不跳转');
             $form->switch('is_show', '是否显示')->states(config('admin.states'))->default(1);
             $form->number('sort', '排序')->default(100)->help('越小越靠前');
