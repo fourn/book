@@ -377,7 +377,7 @@ textarea.textarea {
   right: auto;
   bottom: auto;
   background: url("../images/darkbg.png") repeat;
-  z-index: 99;
+  z-index: 100;
   display: none;
 }
 
@@ -932,12 +932,11 @@ textarea.textarea {
 
 .schoolcheck {
   background: #fff;
-  width: 80%;
-  padding: 0.3rem 5% 0.5rem;
+  width: 90%;
+  padding: 0 5%;
   margin: 0 auto;
-  border-radius: 0.3rem;
   overflow: hidden;
-  top: 20%;
+  height: 100%;
 }
 
 .schoolcheck h2 {
@@ -949,10 +948,45 @@ textarea.textarea {
   background-size: 0.35rem;
 }
 
+.schoolcheck .box01 {
+  background: #fff;
+  width: 90%;
+  height: 0.7rem;
+  padding: 0.15rem 5%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: auto;
+  bottom: auto;
+  z-index: 10;
+  overflow: hidden;
+  line-height: 0.7rem;
+}
+
+.schoolcheck .box01 .sub {
+  float: left;
+  height: 0.7rem;
+  width: 1rem;
+}
+
+.schoolcheck .box01 .text {
+  float: left;
+  height: 0.7rem;
+  border: 1px solid #ddd;
+  padding: 0 0.4rem;
+  border-radius: 0.35rem;
+  width: 3.7rem;
+}
+
+.schoolcheck .box01 span {
+  float: right;
+  color: #27b7ff;
+}
+
 .schoolcheck section {
   width: 100%;
   overflow: auto;
-  height: 3.8rem;
+  height: 100%;
 }
 
 .schoolcheck section a {
@@ -2309,4 +2343,36 @@ textarea.textarea {
   top: 0;
   right: 0;
   bottom: auto;
+}
+
+.floatbtn {
+  position: fixed;
+  left: auto;
+  top: auto;
+  right: 3%;
+  bottom: 1.5rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  z-index: 30;
+  background: #fff url("../images/qq.png") no-repeat center center;
+  background-size: contain;
+}
+
+.essaybox {
+  padding: 0.4rem 5%;
+  overflow: hidden;
+}
+
+.essaybox .p1 {
+  text-align: center;
+  font-size: 0.4rem;
+  padding-bottom: 0.2rem;
+}
+
+.essaybox .p2 {
+  color: #999;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0.4rem;
 }

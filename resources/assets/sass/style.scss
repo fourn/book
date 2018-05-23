@@ -81,7 +81,7 @@ textarea.textarea { border:none; background:none;}
     }
   }
 }
-.winbg { width: 100%; height: 100%;@include _fixed(); background: url("../images/darkbg.png") repeat; z-index: 99; display: none;}
+.winbg { width: 100%; height: 100%;@include _fixed(); background: url("../images/darkbg.png") repeat; z-index: 100; display: none;}
 .winbgclick {width: 100%; height: 100%;@include _absolute();}
 .page404 {
   width: 100%; text-align: center; padding:2rem 0 0.5rem;
@@ -227,10 +227,23 @@ textarea.textarea { border:none; background:none;}
   }
 }
 .schoolcheck {
-  background: $col02; width: 80%; padding:0.3rem 5% 0.5rem; margin: 0 auto; border-radius: 0.3rem; overflow: hidden; top:20%;
-  h2 { font-size: 0.4rem; line-height: 0.7rem; margin-bottom: 0.2rem; padding-left: 0.45rem; background: url("../images/ico03.png") no-repeat left center; background-size: 0.35rem;}
+  background: $col02; width:90%; padding:0 5%; margin: 0 auto; overflow: hidden; height: 100%;
+  h2 {
+    font-size: 0.4rem; line-height: 0.7rem; margin-bottom: 0.2rem; padding-left: 0.45rem; background: url("../images/ico03.png") no-repeat left center; background-size: 0.35rem;}
+  .box01 {
+    background: $col02; width:90%; height:0.7rem; padding:0.15rem 5% ;@include _absolute(); z-index: 10; overflow: hidden; line-height: 0.7rem;
+    .sub {
+      float: left;height: 0.7rem; width: 1rem;
+    }
+    .text {
+      float: left;height: 0.7rem; border:1px solid #ddd; padding: 0 0.4rem; border-radius: 0.35rem; width:3.7rem;
+    }
+    span {
+      float: right; color: $col03;
+    }
+  }
   section {
-    width: 100%; overflow: auto; height: 3.8rem;
+    width: 100%; overflow: auto; height:100%;
     a {
       display: block; padding-right: 0.8rem; border-bottom: 1px solid $col06;@include _textover(); line-height: 0.9rem; font-size: $num04;
       &.sel { color: $col03; background: url("../images/ico04.png") no-repeat right center; background-size: 0.5rem;}
@@ -630,5 +643,15 @@ textarea.textarea { border:none; background:none;}
   a { color: $col08;}
   .a1 {@include _absolute(auto,0,0);}
 }
-
-
+.floatbtn {
+  @include _fixed(auto,auto,3%,1.5rem); width:0.9rem; height:0.9rem; border-radius: 50%; z-index: 30; background:#fff url("../images/qq.png") no-repeat center center; background-size: contain;
+}
+.essaybox {
+  padding: 0.4rem 5%; overflow: hidden;
+  .p1 {
+    text-align: center; font-size: 0.4rem; padding-bottom: 0.2rem;
+  }
+  .p2 {
+    color: #999; text-align: center; width: 100%; margin-bottom: 0.4rem;
+  }
+}
