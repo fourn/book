@@ -96,6 +96,7 @@ class BooksController extends Controller
 		$book->fill($request->all());
 		$book->user_id = Auth::id();
 		$book->school_id = session('school_id');
+		$book->is_show = 1;//默认上架
 		$book->save();
 		return redirect()->route('books.show_self', $book->id)->with('message', '发布成功！请注意审核通知');
 	}
