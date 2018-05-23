@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\ViewComposers\FooterComposer;
 use App\Http\ViewComposers\SetSchoolComposer;
 use Illuminate\Support\ServiceProvider;
+use View;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,11 @@ class ComposerServiceProvider extends ServiceProvider
     {
         //视图合成器
         view()->composer('layouts._set_school', SetSchoolComposer::class);
+
+        // 使用基于类的 composer...
+        View::composer(
+            'layouts._footer', FooterComposer::class
+        );
     }
 
     /**
