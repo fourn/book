@@ -19,6 +19,6 @@ class SmsChannel
 
         // 将通知发送给 $notifiable 实例
         $mobile = $notifiable->routeNotificationFor('sms');
-        PhpSms::make()->to($mobile)->content($content)->send();
+        PhpSms::make()->to($mobile)->content('【乐书淘】'.$content)->send();
     }
 }

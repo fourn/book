@@ -23,7 +23,7 @@
             <form action="{{ route('books.store') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
                 @endif
                 {{ csrf_field() }}
-<p class="rel_tit"><span>ISBN：</span><input type="text" placeholder="请输入ISBM码" name="sn" value="{{ old('sn', $book->sn) }}" /></p>
+<p class="rel_tit"><span>ISBN：</span><input type="text" placeholder="请输入ISBN号" name="sn" value="{{ old('sn', $book->sn) }}" /></p>
 <div class="clear h02"></div>
 <section class="rel_img">
     <p id="upload_image" class="img" style="background-image: url(/images/fm.png)">
