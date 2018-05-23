@@ -18,6 +18,7 @@
     </div>
 </aside>
 @section('script')
+    @parent
     <script type="text/javascript">
         function fuzzySearch(e) {
             const that = this;
