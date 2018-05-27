@@ -13,4 +13,4 @@
 </footer>
 
 {{--客服 QQ--}}
-<a href="http://wpa.qq.com/msgrd?v=3&uin={{$qq}}&site=qq&menu=yes" class="floatbtn" target="_blank"></a>
+{{--<a href="http://wpa.qq.com/msgrd?v=3&uin={{$qq}}&site=qq&menu=yes" class="floatbtn" target="_blank"></a>--}}
