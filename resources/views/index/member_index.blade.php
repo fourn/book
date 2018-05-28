@@ -59,15 +59,14 @@
     <a href="{{ route('books.my') }}" class="memberbtn">
         <p><i style="background-image: url(images/ico/member05.png)"></i>我的发布</p>
     </a>
-    {{--<a href="#" class="memberbtn">
-        <p><i style="background-image: url(images/ico/member06.png)"></i>收到的订单</p>
-    </a>--}}
     <a href="{{ route('account.index') }}" class="memberbtn">
         <p><i style="background-image: url(images/ico/member07.png)"></i>资金账户</p>
     </a>
+    @if($about)
     <a href="{{ $about->link }}" class="memberbtn">
         <p><i style="background-image: url(images/ico/member08.png)"></i>平台介绍</p>
     </a>
+    @endif
     <a href="{{ route('user.index') }}" class="memberbtn">
         <p><i style="background-image: url(images/ico/member09.png)"></i>个人设置</p>
     </a>

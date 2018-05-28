@@ -11,7 +11,9 @@
     </header>
     <div class="comheadbg"></div>
     @include('public._message')
+    @if($banner)
     <a href="{{ $banner->link }}" class="block w100"><img src="{{ $banner->image }}" class="w100 block" /></a>
+    @endif
     <section class="indexmenu">
         <a href="{{ route('books.list') }}?category=1&index=1" style="background-image: url(images/ico/index01.png)">课本教材</a>
         <a href="{{ route('books.list') }}?category=2&index=2" style="background-image: url(images/ico/index02.png)">课外读物</a>
@@ -35,49 +37,9 @@
     </div>
     <div class="clear h02"></div>
 @endif
-    {{--<div class="indexhot">
-        <h2 class="indextit01"><span>好书推荐</span></h2>
-        <section class="indexgood">
-            <a class="a1" href="#" style="background-image: url(images/photo/img02.png)"></a>
-            <a class="a2" href="#" style="background-image: url(images/photo/img03.png)"></a>
-            <a class="a3" href="#" style="background-image: url(images/photo/img03.png)"></a>
-        </section>
-        <h2 class="indextit01"><span>特惠图书</span></h2>
-        <section class="indexlist">
-            <a href="#">
-                <i style="background-image: url(images/photo/img01.png);"></i>
-                <p class="p1">全日制大学教科书</p>
-                <p class="p2">￥55.55<span>￥88.88</span></p>
-            </a>
-            <a href="#">
-                <i style="background-image: url(images/photo/img01.png);"></i>
-                <p class="p1">全日制大学教科书</p>
-                <p class="p2">￥55.55<span>￥88.88</span></p>
-            </a>
-            <a href="#">
-                <i style="background-image: url(images/photo/img01.png);"></i>
-                <p class="p1">全日制大学教科书</p>
-                <p class="p2">￥55.55<span>￥88.88</span></p>
-            </a>
-            <a href="#">
-                <i style="background-image: url(images/photo/img01.png);"></i>
-                <p class="p1">全日制大学教科书</p>
-                <p class="p2">￥55.55<span>￥88.88</span></p>
-            </a>
-            <a href="#">
-                <i style="background-image: url(images/photo/img01.png);"></i>
-                <p class="p1">全日制大学教科书</p>
-                <p class="p2">￥55.55<span>￥88.88</span></p>
-            </a>
-            <a href="#">
-                <i style="background-image: url(images/photo/img01.png);"></i>
-                <p class="p1">全日制大学教科书</p>
-                <p class="p2">￥55.55<span>￥88.88</span></p>
-            </a>
-        </section>
-        <a href="#" class="more"><span>查看更多</span></a>
-    </div>--}}
+    @if($middle)
     <a href="{{ $middle->link }}" class="block w100"><img src="{{ $middle->image }}" class="w100 block" /></a>
+    @endif
     <h2 class="indextit01" style="top: 0.2rem;"><span>最新发布</span></h2>
     <div class="w100 whitebg oh" id="box">
         {{--书本容器--}}

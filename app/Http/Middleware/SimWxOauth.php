@@ -20,7 +20,7 @@ class SimWxOauth
 
 
         $user = new SocialiteUser([
-            'id' => uniqid(),
+            'id' => 'oaAal1As4QtDCtCdDkIMz-L_1u08',
             'name' => 'NICKNAME',
             'nickname' => 'NICKNAME',
             'avatar' => "http://thirdwx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
