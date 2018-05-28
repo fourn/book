@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Handlers\ImageUploadHandler;
 use App\Models\Book;
 use App\Models\Category;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookRequest;
@@ -110,7 +111,12 @@ class BooksController extends Controller
 
 	public function edit(Book $book)
 	{
-        $this->authorize('update', $book);
+        try {
+            $this->authorize('update', $book);
+        } catch (AuthorizationException $e) {
+            session()->flash('danger', '没有访问权限');
+            return redirect()->to(route('index'));
+        }
         $categories = Category::all();
         $useds = config('custom.book.used');
 		return view('books.create_and_edit', compact('book', 'categories', 'useds'));
@@ -118,8 +124,13 @@ class BooksController extends Controller
 
 	public function update(BookRequest $request, Book $book)
 	{
-		$this->authorize('update', $book);
-		$book->fill($request->all());
+        try {
+            $this->authorize('update', $book);
+        } catch (AuthorizationException $e) {
+            session()->flash('danger', '没有访问权限');
+            return redirect()->to(route('index'));
+        }
+        $book->fill($request->all());
 		$book->status = 1;
 		$book->save();
 		return redirect()->route('books.show_self', $book->id)->with('message', '编辑成功！请注意审核通知');
@@ -144,8 +155,13 @@ class BooksController extends Controller
 
 	public function destroy(Book $book)
 	{
-		$this->authorize('destroy', $book);
-		$book->delete();
+        try {
+            $this->authorize('destroy', $book);
+        } catch (AuthorizationException $e) {
+            session()->flash('danger', '没有访问权限');
+            return redirect()->to(route('index'));
+        }
+        $book->delete();
 		return redirect()->route('books.my')->with('message', '删除成功！');
 	}
 }
