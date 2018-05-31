@@ -172,7 +172,7 @@ textarea.textarea {
   background-size: 0.25rem;
   height: 1rem;
   line-height: 1rem;
-  max-width: 2rem;
+  max-width: 1.8rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -187,14 +187,14 @@ textarea.textarea {
   height: 0.7rem;
   background: #ebeced;
   border-radius: 0.35rem;
-  width: 4.5rem;
+  width: 4.3rem;
   overflow: hidden;
   z-index: 5;
 }
 
 .comhead .box01 .sub {
   height: 0.7rem;
-  width: 1rem;
+  width: 0.7rem;
   background: url("../images/search.png") no-repeat right center;
   background-size: 0.4rem;
 }
@@ -924,7 +924,7 @@ textarea.textarea {
   display: inline-block;
   padding-left: 0.7rem;
   line-height: 0.6rem;
-  font-size: 0.36rem;
+  font-size: 0.3rem;
   color: #999;
   background: url("../images/loading.png") no-repeat left center;
   background-size: 0.5rem;
@@ -1528,6 +1528,9 @@ textarea.textarea {
 .bookinfo .p1 {
   font-size: 0.39rem;
   text-align: center;
+  width: 92%;
+  padding-left: 4%;
+  padding-right: 4%;
 }
 
 .bookinfo .p2 {
@@ -1538,6 +1541,9 @@ textarea.textarea {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .bookinfo .p2 span {
@@ -1620,12 +1626,20 @@ textarea.textarea {
 }
 
 .sellerinfo .box .p1 {
-  font-size: 0.36rem;
+  font-size: 0.3rem;
   padding: 0.1rem 0 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 3.5rem;
 }
 
 .sellerinfo .box .p2 {
   font-size: 0.27rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 3.5rem;
 }
 
 .sellerinfo .p3 {
@@ -1670,6 +1684,10 @@ textarea.textarea {
 
 .membertop section .p1 {
   font-size: 0.36rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 70%;
 }
 
 .membertop section .p2 {
@@ -1677,7 +1695,7 @@ textarea.textarea {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 60%;
+  width: 70%;
 }
 
 .membertop section .p3 {
