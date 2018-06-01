@@ -76,7 +76,7 @@ class IndexController extends Controller
                 $model->where('school_id', session('school_id', 0));
             }
             $books = $model->orderBy('updated_at', 'desc')->get();
-            if(Auth::check()){
+            if(Auth::check() && $request->keywords){
                 Auth::user()->searches()->save(new Search(['keywords'=>$request->keywords]));
             }
 
