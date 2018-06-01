@@ -7,7 +7,7 @@
 </header>
 <div class="comheadbg"></div>
 
-
+@include('public._errors')
 
 <img src="/images/address.png" class="w100 block" />
 <a class="top_address">
@@ -46,7 +46,7 @@
     </a>
     <div class="box">
         <span class="sp1">买家留言</span>
-        <input type="text" placeholder="选填" class="text" name="message" />
+        <input type="text" placeholder="必填：送书联系电话、时间、地点" class="text" name="message" />
     </div>
 </section>
 <div class="clear h02"></div>

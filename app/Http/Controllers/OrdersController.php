@@ -98,7 +98,9 @@ class OrdersController extends Controller
 	{
 	    $this->validate($request, [
 	        'book_id'=>'required|numeric',
-            'message'=>'nullable|max:255',
+            'message'=>'required|max:255',
+        ], [
+            'message.required'=>'买家留言，填写送书联系方式',
         ]);
 		$book_id = $request->book_id;
 		$book = Book::findOrFail($book_id);
