@@ -17,29 +17,13 @@
     {{ csrf_field() }}
     <input type="submit" value="模拟付款" class="paysub" />
 </form>
+    @else
+    <input type="button" onclick="callpay()" value="支付" class="paysub" />
 @endif
-<input type="button" onclick="callpay()" value="支付" class="paysub" />
-{{--<aside class="winbg" style="display: block;">
-    <div class="winbgclick"></div>
-    <div class="win_success">
-        <section style="background-image: url(images/error.png)">
-            <p>支付失败！</p>大学生英语四级考试
-        </section>
-        <a href="#">重新支付</a>
-    </div>
-</aside>
 
-<aside class="winbg">
-    <div class="winbgclick"></div>
-    <div class="win_success">
-        <section>
-            <p>恭喜您！购买成功</p>量子烈学
-        </section>
-        <a href="#">返回首页</a>
-    </div>
-</aside>--}}
 @endsection
 @section('script')
+@if(config('order_fake_pay') != 'on')
 <script type="text/javascript">
     //winCloseMyWin(".winbgclick");//关闭窗口
     function jsApiCall(){
@@ -69,5 +53,6 @@
         }
     }
 </script>
+@endif
 @endsection
 

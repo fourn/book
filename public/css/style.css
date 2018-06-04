@@ -2216,11 +2216,26 @@ textarea.textarea {
   padding: 0.15rem 3%;
   background: #fff;
   margin: 0.2rem auto 0;
+  text-align: center;
 }
 
 .newslist a {
   display: block;
   color: #27b7ff;
+}
+
+.newslist span {
+  margin: 0.1rem auto;
+  padding: 0.05rem 0.1rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  color: #fff;
+  font-size: 0.16rem;
+  background-color: #999;
+}
+
+.newslist p {
+  text-align: left;
 }
 
 .newslist .p2 {

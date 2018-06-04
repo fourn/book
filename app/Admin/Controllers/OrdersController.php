@@ -100,10 +100,11 @@ class OrdersController extends Controller
             $grid->payed_at('支付时间');
             $grid->updated_at('最近操作时间');
 
-            $grid->filter(function ($filter) {
+            $grid->filter(function ($filter) use ($statuses) {
                 // 去掉默认的id过滤器
                 $filter->disableIdFilter();
                 $filter->like('sn', '订单号');
+                $filter->equal('status', '订单状态')->select($statuses);
                 $filter->between('created_at', '创建时间')->datetime();
                 $filter->between('payed_at', '支付时间')->datetime();
                 $filter->equal('user_id', '买家')->select(User::all()->pluck('mobile', 'id')->toArray());
