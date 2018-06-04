@@ -115,7 +115,7 @@ class Order extends Model
         $this->status = 5;
         $this->save();
         $this->log(self::OPERATOR_USER);
-        $this->user->notify(new OrderFinish($this));
+        $this->seller->notify(new OrderFinish($this));
         return $this;
     }
 
