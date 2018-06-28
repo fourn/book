@@ -5,7 +5,7 @@
         <!--<h2>选择您所在的学校</h2>-->
         <p class="box01">
             <input type="submit" value="搜索" class="sub"/>
-            <input type="text" value="" list="school_list" id="school_name" onfocus="fuzzySearch.call(this)" placeholder="请输入" class="text"/>
+            <input type="text" value="" list="school_list" id="school_name" onkeypress="fuzzySearch.call(this)" placeholder="请输入" class="text"/>
             @if(session('school_id'))
             <span onclick="$(this).parent().parent().parent().fadeOut(200);">取消</span></p>
             @endif
