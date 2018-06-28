@@ -40,7 +40,7 @@
             let showList = [];
             //为文本框绑定键盘引起事件
 
-            $(this).on('input', function (e) {
+            $(this).bind('input propertychange', function (e) {
                 //如果输入空格自动删除
                 this.value = this.value.replace(' ', '');
                 //列表框显示
