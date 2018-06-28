@@ -42,14 +42,13 @@
             let flag = false;
 
             let doThing = function (_this){
-                //如果输入空格自动删除
-                _this.value = _this.value.replace(' ', '');
-
+                
                 //列表框显示
                 $('#' + listId).show();
 
                 //文本框中输入的字符串
-                const searchVal = $(that).val();
+                const searchVal = $(that).val().replace(' ', '');
+
                 showList = [];
                 //将和所输入的字符串匹配的项存入showList
                 //将匹配项显示，不匹配项隐藏
