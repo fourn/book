@@ -39,8 +39,8 @@
             //showList为列表中和所输入的字符串匹配的项
             let showList = [];
             //为文本框绑定键盘引起事件
-            
-            $(this).on('input propertychange', function (e) {
+
+            $(this).on('input', function (e) {
                 //如果输入空格自动删除
                 this.value = this.value.replace(' ', '');
                 //列表框显示
