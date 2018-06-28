@@ -42,7 +42,7 @@
             let flag = false;
 
             let doThing = function (_this){
-                
+
                 //列表框显示
                 $('#' + listId).show();
 
@@ -67,22 +67,6 @@
             $(this).on('input propertychange', function (){
                 doThing(this);
             });
-
-            /*$(this).on({'compositionstart':function (){
-                    flag = true;
-                }},{'compositionend': function() {
-                    alert(2);
-                    flag = false;
-                    if(!flag) {
-                        doThing(this);
-                    }
-                }},{'input propertychange': function (e) {
-                    alert(1);
-                    if(!flag) {
-                        doThing(this);
-                    }
-
-            }})*/
 
         }
     </script>
