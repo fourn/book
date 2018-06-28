@@ -5,7 +5,7 @@
         <!--<h2>选择您所在的学校</h2>-->
         <p class="box01">
             <input type="submit" value="搜索" class="sub"/>
-            <input type="text" value="" list="school_list" id="school_name" onkeyup="fuzzySearch.call(this)" placeholder="请输入" class="text"/>
+            <input type="text" value="" list="school_list" id="school_name" placeholder="请输入" class="text"/>
             @if(session('school_id'))
             <span onclick="$(this).parent().parent().parent().fadeOut(200);">取消</span></p>
             @endif
@@ -20,10 +20,10 @@
 @section('script')
     @parent
     <script type="text/javascript">
-        function fuzzySearch(e) {
-            const that = this;
+        function fuzzySearch(e, _this) {
+            const that = _this;
             //获取列表的ID
-            let listId = $(this).attr("list");
+            let listId = _this.attr("list");
             //列表
             let list = $('#' + listId + ' a');
             //列表项数组  包列表项的id、内容、元素
@@ -39,7 +39,7 @@
             //showList为列表中和所输入的字符串匹配的项
             let showList = [];
             //为文本框绑定键盘引起事件
-            $(this).keyup(function (e) {
+            _this.keyup(function (e) {
                 //如果输入空格自动删除
                 this.value = this.value.replace(' ', '');
                 //列表框显示
@@ -67,5 +67,9 @@
                 }
             })
         }
+        $('#school_name').on('input propertychange', function (e){
+            var _this = $(this);
+            fuzzySearch(e, _this);
+        });
     </script>
 @endsection
