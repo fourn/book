@@ -39,34 +39,52 @@
             //showList为列表中和所输入的字符串匹配的项
             let showList = [];
             //为文本框绑定键盘引起事件
+            let flag = false;
 
-            $(this).bind('input propertychange', function (e) {
+            let doThing = function (_this){
                 //如果输入空格自动删除
-                this.value = this.value.replace(' ', '');
+                _this.value = _this.value.replace(' ', '');
+
                 //列表框显示
                 $('#' + listId).show();
-                if (e.keyCode == 13) {
-                    //enter
-                    console.log('enter');
-                } else {
-                    //other
-                    console.log('other');
-                    //文本框中输入的字符串
-                    const searchVal = $(that).val();
-                    showList = [];
-                    //将和所输入的字符串匹配的项存入showList
-                    //将匹配项显示，不匹配项隐藏
-                    $.each(listArr, function (index, item) {
-                        if (item.eleName.indexOf(searchVal) != -1) {
-                            item.ele.style.display = "block";
-                            showList.push(item.ele);
-                        } else {
-                            item.ele.style.display = 'none';
-                        }
-                    });
-                    console.log(showList);
-                }
-            })
+
+                //文本框中输入的字符串
+                const searchVal = $(that).val();
+                showList = [];
+                //将和所输入的字符串匹配的项存入showList
+                //将匹配项显示，不匹配项隐藏
+                $.each(listArr, function (index, item) {
+                    if (item.eleName.indexOf(searchVal) != -1) {
+                        item.ele.style.display = "block";
+                        showList.push(item.ele);
+                    } else {
+                        item.ele.style.display = 'none';
+                    }
+                });
+                console.log(showList);
+
+            };
+
+            $(this).on('input propertychange', function (){
+                doThing(this);
+            });
+
+            /*$(this).on({'compositionstart':function (){
+                    flag = true;
+                }},{'compositionend': function() {
+                    alert(2);
+                    flag = false;
+                    if(!flag) {
+                        doThing(this);
+                    }
+                }},{'input propertychange': function (e) {
+                    alert(1);
+                    if(!flag) {
+                        doThing(this);
+                    }
+
+            }})*/
+
         }
     </script>
 @endsection
